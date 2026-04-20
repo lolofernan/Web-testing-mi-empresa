@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Monitor, Code, Star, Send, ChevronRight, Menu, X, Award, Shield, Zap, MessageCircle, Instagram } from 'lucide-react';
+import { Monitor, Code, Star, Send, ChevronRight, Menu, X, Award, Shield, Zap, MessageCircle, Instagram, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
@@ -31,10 +31,7 @@ export default function App() {
   ];
 
   const stats = [
-    { label: "Tiempo Entrega", value: "3-13d" },
-    { label: "Proyectos Exitosos", value: "500+" },
-    { label: "Clientes Felices", value: "300+" },
-    { label: "Tazas de Café", value: "∞" }
+    { label: "Tiempo Entrega", value: "3-13d" }
   ];
 
   const containerVariants = {
@@ -70,10 +67,10 @@ export default function App() {
           </motion.div>
           
           <div className="hidden md:flex gap-8 text-xs font-medium uppercase tracking-[0.2em]">
-            {['Inicio', 'Servicios', 'Por qué elegirnos', 'Contacto'].map((item, i) => (
+            {['Inicio', 'Servicios', 'Por qué elegirnos', 'Sobre mí', 'Contacto'].map((item, i) => (
               <motion.a 
                 key={item} 
-                href={item === 'Por qué elegirnos' ? '#experiencia' : `#${item.toLowerCase()}`}
+                href={item === 'Por qué elegirnos' ? '#experiencia' : item === 'Sobre mí' ? '#quien-soy' : `#${item.toLowerCase()}`}
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.1 * i }}
@@ -100,10 +97,10 @@ export default function App() {
             className="fixed inset-0 z-40 bg-black pt-24 px-6 md:hidden"
           >
             <div className="flex flex-col gap-8 text-2xl font-bold uppercase tracking-tighter">
-              {['Inicio', 'Servicios', 'Por qué elegirnos', 'Contacto'].map((item) => (
+              {['Inicio', 'Servicios', 'Por qué elegirnos', 'Sobre mí', 'Contacto'].map((item) => (
                 <a 
                   key={item} 
-                  href={item === 'Por qué elegirnos' ? '#experiencia' : `#${item.toLowerCase()}`} 
+                  href={item === 'Por qué elegirnos' ? '#experiencia' : item === 'Sobre mí' ? '#quien-soy' : `#${item.toLowerCase()}`} 
                   onClick={() => setIsMenuOpen(false)}
                   className="hover:text-gray-400 transition-colors"
                 >
@@ -178,7 +175,7 @@ export default function App() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center"
+            className="flex flex-col md:flex-row items-center justify-center gap-12 text-center"
           >
             {stats.map((stat, i) => (
               <motion.div key={i} variants={itemVariants} className="space-y-2">
@@ -186,6 +183,16 @@ export default function App() {
                 <p className="text-gray-500 uppercase text-[10px] tracking-[0.3em] font-bold">{stat.label}</p>
               </motion.div>
             ))}
+            
+            <motion.button
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById('quien-soy')?.scrollIntoView({ behavior: 'smooth' })}
+              className="border border-gray-800 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/5 transition-all flex items-center gap-2"
+            >
+              quienes estan detras <ChevronRight className="w-3 h-3" />
+            </motion.button>
           </motion.div>
         </div>
       </section>
@@ -262,6 +269,42 @@ export default function App() {
                   </div>
                 </motion.div>
               ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Quien soy Section */}
+      <section id="quien-soy" className="py-32 bg-black border-t border-gray-900">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="w-full md:w-1/3 aspect-square bg-zinc-950 rounded-full border border-gray-800 flex items-center justify-center p-12 overflow-hidden group"
+          >
+            <User size={120} className="text-gray-800 group-hover:text-white transition-colors duration-500" />
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex-1 space-y-6"
+          >
+            <span className="text-gray-600 uppercase text-[10px] tracking-[0.3em] font-bold block">El fundador</span>
+            <h2 className="text-5xl font-black uppercase tracking-tighter italic font-display">Soy Lorenzo</h2>
+            <p className="text-gray-400 text-lg leading-relaxed font-light max-w-2xl">
+              Un joven emprendedor de <span className="text-white font-medium">15 años</span> con una visión clara: revolucionar el diseño web. Mi objetivo es demostrar que la edad no es un límite para la innovación y la excelencia digital.
+            </p>
+            <p className="text-gray-500 leading-relaxed font-light max-w-2xl">
+              En Web Testing, fusiono creatividad audaz con rapidez extrema para entregar sitios que no solo se ven bien, sino que impulsan negocios reales al siguiente nivel. Estoy aquí para construir el futuro de la web, un proyecto a la vez.
+            </p>
+            <div className="pt-6">
+              <div className="inline-block p-1 rounded-full bg-gradient-to-r from-gray-800 to-transparent">
+                <div className="bg-black px-6 py-2 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">
+                  Fundador de Web Testing
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -344,3 +387,5 @@ export default function App() {
     </div>
   );
 }
+
+
