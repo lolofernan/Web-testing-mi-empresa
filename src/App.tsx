@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [selectedService, setSelectedService] = useState<null | typeof services[0]>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -31,7 +32,7 @@ export default function App() {
   ];
 
   const stats = [
-    { label: "Tiempo Entrega", value: "3-13d" }
+    { label: "Tiempo Entrega", value: "3 - 13d" }
   ];
 
   const containerVariants = {
@@ -52,8 +53,17 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-black text-gray-100 font-sans selection:bg-white selection:text-black">
-      {/* Navegación */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-gray-800 py-4' : 'bg-transparent py-6'}`}>
+      <AnimatePresence mode="wait">
+        {!selectedService ? (
+          <motion.div
+            key="main-web"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* Navegación */}
+            <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-gray-800 py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <motion.div 
             initial={{ x: -20, opacity: 0 }}
@@ -66,15 +76,15 @@ export default function App() {
             <span className="text-xl font-bold tracking-tighter uppercase font-display">Web Testing</span>
           </motion.div>
           
-          <div className="hidden md:flex gap-8 text-xs font-medium uppercase tracking-[0.2em]">
-            {['Inicio', 'Servicios', 'Por qué elegirnos', 'Sobre mí', 'Contacto'].map((item, i) => (
+          <div className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
+            {['Inicio', 'PORQUÉ ELEGIRNOS', 'Sobre mí'].map((item, i) => (
               <motion.a 
                 key={item} 
-                href={item === 'Por qué elegirnos' ? '#experiencia' : item === 'Sobre mí' ? '#quien-soy' : `#${item.toLowerCase()}`}
+                href={item === 'PORQUÉ ELEGIRNOS' ? '#experiencia' : item === 'Sobre mí' ? '#quien-soy' : `#${item.toLowerCase()}`}
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.1 * i }}
-                className="hover:text-white text-gray-400 transition-colors"
+                className="text-gray-400 hover:text-white transition-colors"
               >
                 {item}
               </motion.a>
@@ -97,10 +107,10 @@ export default function App() {
             className="fixed inset-0 z-40 bg-black pt-24 px-6 md:hidden"
           >
             <div className="flex flex-col gap-8 text-2xl font-bold uppercase tracking-tighter">
-              {['Inicio', 'Servicios', 'Por qué elegirnos', 'Sobre mí', 'Contacto'].map((item) => (
+              {['Inicio', 'PORQUÉ ELEGIRNOS', 'Sobre mí'].map((item) => (
                 <a 
                   key={item} 
-                  href={item === 'Por qué elegirnos' ? '#experiencia' : item === 'Sobre mí' ? '#quien-soy' : `#${item.toLowerCase()}`} 
+                  href={item === 'PORQUÉ ELEGIRNOS' ? '#experiencia' : item === 'Sobre mí' ? '#quien-soy' : `#${item.toLowerCase()}`} 
                   onClick={() => setIsMenuOpen(false)}
                   className="hover:text-gray-400 transition-colors"
                 >
@@ -137,21 +147,30 @@ export default function App() {
             <p className="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light">
               Perfeccionando el arte de la venta digital. Creamos plataformas de alto impacto que convierten visitantes en clientes leales.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => document.getElementById('experiencia')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-gray-200 transition-all shadow-xl shadow-white/5"
+                onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-sweep border border-gray-800 text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs shadow-xl shadow-white/5"
               >
-                Por qué elegirnos
+                Nuestros Servicios
               </motion.button>
               <motion.button 
-                whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
-                onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border border-gray-800 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs transition-all"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => document.getElementById('presupuesto')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-sweep border border-gray-800 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs"
               >
-                Ver Portafolio
+                Presupuesto
+              </motion.button>
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => document.getElementById('quien-soy')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-sweep border border-gray-800 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
+              >
+                Quienes estan detras <ChevronRight className="w-3 h-3" />
               </motion.button>
             </div>
           </motion.div>
@@ -183,16 +202,6 @@ export default function App() {
                 <p className="text-gray-500 uppercase text-[10px] tracking-[0.3em] font-bold">{stat.label}</p>
               </motion.div>
             ))}
-            
-            <motion.button
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById('quien-soy')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border border-gray-800 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/5 transition-all flex items-center gap-2"
-            >
-              quienes estan detras <ChevronRight className="w-3 h-3" />
-            </motion.button>
           </motion.div>
         </div>
       </section>
@@ -226,15 +235,28 @@ export default function App() {
                   {s.icon}
                 </div>
                 <h3 className="text-2xl font-bold mb-4 uppercase tracking-tight relative z-10">{s.title}</h3>
-                <p className="text-gray-500 group-hover:text-gray-400 leading-relaxed mb-10 font-light relative z-10">
+                <p className="text-gray-500 group-hover:text-gray-400 leading-relaxed font-light relative z-10">
                   {s.desc}
                 </p>
-                <a href="#" className="inline-flex items-center text-[10px] font-black uppercase tracking-[0.25em] text-white group-hover:gap-3 transition-all relative z-10">
-                  Saber más <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
               </motion.div>
             ))}
           </div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex justify-center mt-20"
+          >
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setSelectedService({ title: "Nuestros Servicios", desc: "Información detallada sobre todos nuestros planes y soluciones digitales.", icon: null })}
+              className="btn-sweep border border-gray-800 text-white px-16 py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] shadow-2xl shadow-white/5 flex items-center gap-4 transition-all"
+            >
+              Saber más <ChevronRight className="w-5 h-5" />
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 
@@ -253,8 +275,8 @@ export default function App() {
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { title: "Rapidez Extrema", icon: <Zap />, desc: "Entregamos entre 3 a 13 dias, sin comprometer la calidad." },
-                { title: "Los más Baratos", icon: <Award />, desc: "350 a 1250 USD dependiendo de la página. Calidad premium al mejor precio." },
+                { title: "Rapidez Extrema", icon: <Zap />, desc: "Entregamos entre 3 - 13 días, sin comprometer la calidad." },
+                { title: "EL MEJOR PRECIO", icon: <Award />, desc: "350 a 1250 USD dependiendo de la página. Calidad premium al mejor precio." },
                 { title: "Flexibilidad Total", icon: <Star />, desc: "Pide cambios a tu web cuando quieras. Tu visión evoluciona y nosotros contigo." }
               ].map((item, i) => (
                 <motion.div 
@@ -271,6 +293,64 @@ export default function App() {
               ))}
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Presupuesto Section */}
+      <section id="presupuesto" className="py-32 bg-zinc-950 border-t border-gray-900 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-10"
+            >
+              <div className="space-y-4">
+                <span className="text-zinc-600 uppercase text-[10px] tracking-[0.4em] font-bold block">Inversión Transparente</span>
+                <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+                  PRESUPUESTO <br />
+                  <span className="text-gray-700">PERSONALIZADO</span>
+                </h2>
+              </div>
+              <p className="text-gray-400 text-lg leading-relaxed font-light">
+                Cada proyecto es único. Por eso, para saber con exactitud el costo de tu servicio, deberás contactarnos directamente por WhatsApp.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6">
+                <motion.a 
+                  href="https://wa.me/5491130750355"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center justify-center gap-4 btn-sweep border border-gray-800 text-white px-10 py-5 rounded-full font-black uppercase tracking-[0.2em] text-xs"
+                >
+                  <MessageCircle fill="currentColor" className="w-5 h-5" /> Consultar WhatsApp
+                </motion.a>
+                <motion.button 
+                  onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="btn-sweep border border-gray-800 px-10 py-5 rounded-full font-black uppercase tracking-[0.2em] text-xs text-gray-400 hover:text-white"
+                >
+                  Ver Servicios
+                </motion.button>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative aspect-square md:aspect-video lg:aspect-square bg-zinc-900 rounded-[3rem] border border-gray-800 overflow-hidden p-1"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
+              <div className="h-full w-full bg-black rounded-[2.8rem] flex flex-col items-center justify-center p-12 text-center space-y-4">
+                <Shield size={60} className="text-gray-800 mb-4" />
+                <h3 className="text-2xl font-bold uppercase tracking-tight">Garantía de Valor</h3>
+                <p className="text-gray-500 font-light text-sm">Precios competitivos adaptados a las necesidades reales de tu negocio, sin costos ocultos.</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -311,42 +391,42 @@ export default function App() {
       </section>
 
       {/* Contacto */}
-      <section id="contacto" className="py-32 bg-zinc-950 relative">
+      <section id="contacto" className="py-32 bg-zinc-950 relative border-t border-gray-900">
          <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-black uppercase mb-4 italic tracking-tighter font-display">¿Listo para el siguiente nivel?</h2>
-            <p className="text-gray-500 font-light">Cuéntanos tu visión y la haremos realidad con nuestra pasión por el diseño.</p>
-          </div>
-          
-          <motion.form 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" 
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <div className="space-y-2">
-              <label className="text-[10px] uppercase tracking-[0.3em] text-gray-600 font-bold ml-4">Nombre</label>
-              <input type="text" placeholder="Tu nombre" className="w-full bg-black border border-gray-900 p-6 focus:border-gray-600 outline-none transition-colors rounded-3xl font-light text-sm" />
+          <div className="text-center">
+              <h3 className="text-3xl font-black uppercase mb-4 italic tracking-tighter font-display">O déjanos un mensaje</h3>
+              <p className="text-gray-500 font-light text-sm">Si lo prefieres, completa el formulario y te escribiremos nosotros.</p>
             </div>
-            <div className="space-y-2">
-              <label className="text-[10px] uppercase tracking-[0.3em] text-gray-600 font-bold ml-4">Email</label>
-              <input type="email" placeholder="tu@email.com" className="w-full bg-black border border-gray-900 p-6 focus:border-gray-600 outline-none transition-colors rounded-3xl font-light text-sm" />
-            </div>
-            <div className="md:col-span-2 space-y-2">
-              <label className="text-[10px] uppercase tracking-[0.3em] text-gray-600 font-bold ml-4">Mensaje</label>
-              <textarea placeholder="Háblanos sobre tu proyecto..." rows={5} className="w-full bg-black border border-gray-900 p-6 focus:border-gray-600 outline-none transition-colors rounded-[2.5rem] resize-none font-light text-sm"></textarea>
-            </div>
-            <motion.button 
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="md:col-span-2 bg-white text-black p-6 font-black uppercase tracking-[0.3em] text-xs flex items-center justify-center gap-3 hover:bg-gray-200 transition-all rounded-full"
+            
+            <motion.form 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" 
+              onSubmit={(e) => e.preventDefault()}
             >
-              Enviar Propuesta <Send className="w-4 h-4" />
-            </motion.button>
-          </motion.form>
-        </div>
-      </section>
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-[0.3em] text-gray-600 font-bold ml-4">Nombre</label>
+                <input type="text" placeholder="Tu nombre" className="w-full bg-black border border-gray-900 p-6 focus:border-gray-600 outline-none transition-colors rounded-3xl font-light text-sm" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-[0.3em] text-gray-600 font-bold ml-4">Email</label>
+                <input type="email" placeholder="tu@email.com" className="w-full bg-black border border-gray-900 p-6 focus:border-gray-600 outline-none transition-colors rounded-3xl font-light text-sm" />
+              </div>
+              <div className="md:col-span-2 space-y-2">
+                <label className="text-[10px] uppercase tracking-[0.3em] text-gray-600 font-bold ml-4">Mensaje</label>
+                <textarea placeholder="Háblanos sobre tu proyecto..." rows={5} className="w-full bg-black border border-gray-900 p-6 focus:border-gray-600 outline-none transition-colors rounded-[2.5rem] resize-none font-light text-sm"></textarea>
+              </div>
+              <motion.button 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="md:col-span-2 btn-sweep border border-gray-800 text-white p-6 font-black uppercase tracking-[0.3em] text-xs flex items-center justify-center gap-3 rounded-full"
+              >
+                Enviar Propuesta <Send className="w-4 h-4" />
+              </motion.button>
+            </motion.form>
+          </div>
+        </section>
 
       {/* Footer */}
       <footer className="py-20 border-t border-gray-900 bg-black">
@@ -384,6 +464,61 @@ export default function App() {
           </div>
         </div>
       </footer>
+    </motion.div>
+  ) : (
+          <motion.div
+            key="service-detail"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="min-h-screen flex items-center justify-center bg-black p-6"
+          >
+            <div className="max-w-3xl w-full">
+              <button 
+                onClick={() => setSelectedService(null)}
+                className="mb-12 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 hover:text-white transition-colors"
+              >
+                <ChevronRight className="w-4 h-4 rotate-180" /> Volver al inicio
+              </button>
+              
+              <div className="space-y-12">
+                {selectedService.icon && (
+                  <div className="p-6 bg-white/5 w-fit rounded-3xl text-white">
+                    {selectedService.icon}
+                  </div>
+                )}
+                
+                <div className="space-y-4">
+                  <span className="text-zinc-600 uppercase text-[10px] tracking-[0.4em] font-bold block">Información Detallada</span>
+                  <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+                    {selectedService.title}
+                  </h2>
+                </div>
+                
+                <div className="p-10 border border-gray-800 rounded-[3rem] bg-zinc-950/50 space-y-8">
+                  <p className="text-gray-400 text-xl leading-relaxed font-light">
+                    Para obtener información técnica detallada, ejemplos de implementación y una propuesta personalizada sobre <span className="text-white font-medium">{selectedService.title}</span>, por favor contáctanos directamente.
+                  </p>
+                  
+                  <div className="pt-8 border-t border-gray-900">
+                    <h4 className="text-xl font-bold uppercase tracking-tight mb-6 italic">¿LISTO PARA EMPEZAR?</h4>
+                    <motion.a 
+                      href="https://wa.me/5491130750355"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center gap-4 btn-sweep border border-gray-800 text-white px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm shadow-2xl shadow-white/5"
+                    >
+                      <MessageCircle fill="currentColor" className="w-5 h-5" /> Consultar por WhatsApp
+                    </motion.a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
