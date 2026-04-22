@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Monitor, Code, Star, Send, ChevronRight, Menu, X, Award, Shield, Zap, MessageCircle, Instagram, User } from 'lucide-react';
+import { Monitor, Code, Star, Send, ChevronRight, Menu, X, Award, Shield, Zap, MessageCircle, Instagram, User, Gift } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
@@ -152,7 +152,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-sweep border border-gray-800 text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs shadow-xl shadow-white/5"
+                className="btn-sweep border border-gray-800 text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs"
               >
                 Nuestros Servicios
               </motion.button>
@@ -252,7 +252,7 @@ export default function App() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedService({ title: "Nuestros Servicios", desc: "Información detallada sobre todos nuestros planes y soluciones digitales.", icon: null })}
-              className="btn-sweep border border-gray-800 text-white px-16 py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] shadow-2xl shadow-white/5 flex items-center gap-4 transition-all"
+              className="btn-sweep border border-gray-800 text-white px-16 py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] flex items-center gap-4 transition-all"
             >
               Saber más <ChevronRight className="w-5 h-5" />
             </motion.button>
@@ -296,60 +296,116 @@ export default function App() {
         </div>
       </section>
 
-      {/* Presupuesto Section */}
+      {/* Presupuesto / Precios Section */}
       <section id="presupuesto" className="py-32 bg-zinc-950 border-t border-gray-900 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            <span className="text-zinc-600 uppercase text-[10px] tracking-[0.4em] font-bold block">Inversión Transparente</span>
+            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+              LISTA DE <span className="text-gray-700 text-6xl md:text-8xl">PRECIOS</span>
+            </h2>
+            <p className="text-gray-500 max-w-2xl mx-auto font-light">
+              Sin sorpresas ni costos ocultos. Tarifas adaptadas a startups y negocios que buscan impacto real.
+            </p>
+          </motion.div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { 
+                title: "Desarrollo Web", 
+                price: "35$ - 50$", 
+                features: ["Diseño de alto impacto", "Adaptable a móviles", "Entrega ultra rápida"] 
+              },
+              { 
+                title: "Mantenimiento", 
+                price: "44$", 
+                period: "/ mes",
+                features: ["Incluye Dominio .com", "5 Modificaciones mensuales", "Soporte prioritario", "Primer mes 100% BONIFICADO*"] 
+              },
+              { 
+                title: "Modificación Grande", 
+                price: "55$ - 497$", 
+                features: ["Rediseño de secciones", "Nuevas funcionalidades", "Escalabilidad", "Presupuesto exacto previo"] 
+              },
+              { 
+                title: "Dominio .app", 
+                price: "10$", 
+                features: ["Un año de suscripción", "Ideal para webapps", "Configuración DNS", "Privacidad incluida"] 
+              },
+              { 
+                title: "Google Maps", 
+                price: "30$", 
+                features: ["Seguimiento local exclusivo", "Optimización de perfil", "Aumento de visibilidad", "Configuración completa"] 
+              }
+            ].map((plan, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="bg-black border border-gray-900 p-10 rounded-[2.5rem] flex flex-col justify-between group hover:border-gray-700 transition-colors"
+              >
+                <div className="space-y-8">
+                  <h3 className="text-zinc-500 uppercase text-[10px] tracking-[0.3em] font-bold">{plan.title}</h3>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-5xl font-black italic font-display tracking-tighter text-white">{plan.price}</span>
+                    {plan.period && <span className="text-zinc-600 font-bold uppercase text-[10px] tracking-widest">{plan.period}</span>}
+                  </div>
+                  <ul className="space-y-4 pt-4 border-t border-gray-900">
+                    {plan.features.map((f, idx) => (
+                      <li key={idx} className="flex items-center gap-3 text-sm text-gray-500 group-hover:text-gray-400 transition-colors font-light italic">
+                        <div className="w-1.5 h-1.5 bg-gray-800 rounded-full group-hover:bg-white transition-colors" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+            
+            {/* Promo Card */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-10"
-            >
-              <div className="space-y-4">
-                <span className="text-zinc-600 uppercase text-[10px] tracking-[0.4em] font-bold block">Inversión Transparente</span>
-                <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
-                  PRESUPUESTO <br />
-                  <span className="text-gray-700">PERSONALIZADO</span>
-                </h2>
-              </div>
-              <p className="text-gray-400 text-lg leading-relaxed font-light">
-                Cada proyecto es único. Por eso, para saber con exactitud el costo de tu servicio, deberás contactarnos directamente por WhatsApp.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6">
-                <motion.a 
-                  href="https://wa.me/5491130750355"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center gap-4 btn-sweep border border-gray-800 text-white px-10 py-5 rounded-full font-black uppercase tracking-[0.2em] text-xs"
-                >
-                  <MessageCircle fill="currentColor" className="w-5 h-5" /> Consultar WhatsApp
-                </motion.a>
-                <motion.button 
-                  onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="btn-sweep border border-gray-800 px-10 py-5 rounded-full font-black uppercase tracking-[0.2em] text-xs text-gray-400 hover:text-white"
-                >
-                  Ver Servicios
-                </motion.button>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-square md:aspect-video lg:aspect-square bg-zinc-900 rounded-[3rem] border border-gray-800 overflow-hidden p-1"
+              className="bg-zinc-900/50 border-2 border-dashed border-gray-800 p-10 rounded-[2.5rem] flex flex-col justify-center text-center space-y-6"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
-              <div className="h-full w-full bg-black rounded-[2.8rem] flex flex-col items-center justify-center p-12 text-center space-y-4">
-                <Shield size={60} className="text-gray-800 mb-4" />
-                <h3 className="text-2xl font-bold uppercase tracking-tight">Garantía de Valor</h3>
-                <p className="text-gray-500 font-light text-sm">Precios competitivos adaptados a las necesidades reales de tu negocio, sin costos ocultos.</p>
+              <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
+                <Gift className="text-white" size={32} />
               </div>
+              <h3 className="text-2xl font-black uppercase tracking-tighter italic font-display text-white">BONO DE BIENVENIDA</h3>
+              <p className="text-gray-500 text-sm font-light leading-relaxed italic">
+                *El primer mes las modificaciones y el mantenimiento <span className="text-white font-medium">NO TIENEN COSTO</span>. Solo abonas el dominio.
+              </p>
+              <p className="text-xs text-zinc-600 font-bold uppercase tracking-widest leading-relaxed">
+                (Las modificaciones pequeñas nunca cuentan como cupo mensual)
+              </p>
             </motion.div>
+          </div>
+
+          <div className="mt-20 flex flex-col items-center gap-8 text-center pt-20 border-t border-gray-900/50">
+            <p className="text-gray-400 text-xl font-light italic max-w-3xl leading-relaxed">
+              ¿Tenés un proyecto más grande o dudas sobre los planes? Consultanos por WhatsApp y armamos algo a tu medida en minutos.
+            </p>
+            <motion.a 
+              href="https://wa.me/5491130750355"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center justify-center gap-4 bg-white text-black px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm shadow-2xl shadow-white/10 hover:bg-gray-100 transition-colors"
+            >
+              <MessageCircle fill="currentColor" className="w-5 h-5 text-black" /> Hablar con Lorenzo
+            </motion.a>
           </div>
         </div>
       </section>
@@ -390,44 +446,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Contacto */}
-      <section id="contacto" className="py-32 bg-zinc-950 relative border-t border-gray-900">
-         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center">
-              <h3 className="text-3xl font-black uppercase mb-4 italic tracking-tighter font-display">O déjanos un mensaje</h3>
-              <p className="text-gray-500 font-light text-sm">Si lo prefieres, completa el formulario y te escribiremos nosotros.</p>
-            </div>
-            
-            <motion.form 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" 
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-[0.3em] text-gray-600 font-bold ml-4">Nombre</label>
-                <input type="text" placeholder="Tu nombre" className="w-full bg-black border border-gray-900 p-6 focus:border-gray-600 outline-none transition-colors rounded-3xl font-light text-sm" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-[0.3em] text-gray-600 font-bold ml-4">Email</label>
-                <input type="email" placeholder="tu@email.com" className="w-full bg-black border border-gray-900 p-6 focus:border-gray-600 outline-none transition-colors rounded-3xl font-light text-sm" />
-              </div>
-              <div className="md:col-span-2 space-y-2">
-                <label className="text-[10px] uppercase tracking-[0.3em] text-gray-600 font-bold ml-4">Mensaje</label>
-                <textarea placeholder="Háblanos sobre tu proyecto..." rows={5} className="w-full bg-black border border-gray-900 p-6 focus:border-gray-600 outline-none transition-colors rounded-[2.5rem] resize-none font-light text-sm"></textarea>
-              </div>
-              <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="md:col-span-2 btn-sweep border border-gray-800 text-white p-6 font-black uppercase tracking-[0.3em] text-xs flex items-center justify-center gap-3 rounded-full"
-              >
-                Enviar Propuesta <Send className="w-4 h-4" />
-              </motion.button>
-            </motion.form>
-          </div>
-        </section>
-
       {/* Footer */}
       <footer className="py-20 border-t border-gray-900 bg-black">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
@@ -438,7 +456,7 @@ export default function App() {
             <span className="text-xl font-bold tracking-tighter uppercase font-display">Web Testing</span>
           </div>
           <p className="text-gray-700 text-[10px] tracking-[0.35em] uppercase font-bold text-center">
-            © 2024 Web Testing - Innovación digital de alto rendimiento
+            © 2026 WEB TESTING — PÁGINA 100% HECHA CON WEB TESTING Y NUESTROS SERVICIOS
           </p>
           <div className="flex gap-10 items-center">
             <motion.a 
@@ -508,7 +526,7 @@ export default function App() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="inline-flex items-center gap-4 btn-sweep border border-gray-800 text-white px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm shadow-2xl shadow-white/5"
+                      className="inline-flex items-center gap-4 btn-sweep border border-gray-800 text-white px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm"
                     >
                       <MessageCircle fill="currentColor" className="w-5 h-5" /> Consultar por WhatsApp
                     </motion.a>
