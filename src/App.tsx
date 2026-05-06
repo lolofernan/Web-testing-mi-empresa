@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Monitor, Code, Star, Send, ChevronRight, Menu, X, Award, Shield, Zap, MessageCircle, Instagram, User, Gift } from 'lucide-react';
+import { Monitor, Code, Star, ChevronRight, Menu, X, Award, Zap, MessageCircle, Instagram, Gift } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import profilePhoto from './assets/yojuajau.jpg';
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [selectedService, setSelectedService] = useState<null | typeof services[0]>(null);
+  const [showProcessPage, setShowProcessPage] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -32,7 +34,7 @@ export default function App() {
   ];
 
   const stats = [
-    { label: "Tiempo Entrega", value: "3 - 13d" }
+    { label: "Entrega estimada", value: "3 - 13 días" }
   ];
 
   const containerVariants = {
@@ -54,7 +56,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black text-gray-100 font-sans selection:bg-white selection:text-black">
       <AnimatePresence mode="wait">
-        {!selectedService ? (
+        {!selectedService && !showProcessPage ? (
           <motion.div
             key="main-web"
             initial={{ opacity: 0 }}
@@ -136,7 +138,7 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block px-4 py-1 border border-gray-800 text-[10px] tracking-[0.4em] uppercase mb-8 rounded-full bg-white/5 backdrop-blur-sm text-gray-400 font-medium">
-              Innovación digital sin límites
+              Diseño web premium para marcas que quieren vender más
             </span>
             <h1 className="text-6xl md:text-[120px] font-black mb-8 leading-[0.9] tracking-tighter font-display uppercase">
               DISEÑO QUE <br/>
@@ -145,7 +147,7 @@ export default function App() {
               </span>
             </h1>
             <p className="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light">
-              Perfeccionando el arte de la venta digital. Creamos plataformas de alto impacto que convierten visitantes en clientes leales.
+              Diseñamos experiencias digitales rápidas, elegantes y pensadas para convertir visitas en consultas reales.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <motion.button 
@@ -170,7 +172,15 @@ export default function App() {
                 onClick={() => document.getElementById('quien-soy')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn-sweep border border-gray-800 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
               >
-                Quienes estan detras <ChevronRight className="w-3 h-3" />
+                Quiénes están detrás <ChevronRight className="w-3 h-3" />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setShowProcessPage(true)}
+                className="btn-sweep border border-gray-800 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
+              >
+                Cómo trabajamos <ChevronRight className="w-3 h-3" />
               </motion.button>
             </div>
           </motion.div>
@@ -213,7 +223,7 @@ export default function App() {
             <div className="max-w-xl">
               <span className="text-gray-600 uppercase text-[10px] tracking-[0.3em] font-bold mb-4 block">Expertise</span>
               <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter italic font-display">Nuestros Servicios</h2>
-              <p className="text-gray-500 leading-relaxed">Soluciones integrales diseñadas para dominar el mercado digital actual con elegancia y rendimiento.</p>
+              <p className="text-gray-500 leading-relaxed">Soluciones integrales para negocios que necesitan una presencia online seria, veloz y lista para cerrar ventas.</p>
             </div>
             <div className="h-px flex-1 bg-gray-900 mb-6 hidden md:block"></div>
           </div>
@@ -276,7 +286,7 @@ export default function App() {
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 { title: "Rapidez Extrema", icon: <Zap />, desc: "Entregamos entre 3 - 13 días, sin comprometer la calidad." },
-                { title: "EL MEJOR PRECIO", icon: <Award />, desc: "350 a 1250 USD dependiendo de la página. Calidad premium al mejor precio." },
+                { title: "Precio competitivo", icon: <Award />, desc: "Valores claros según el alcance del proyecto, con foco en calidad y resultado." },
                 { title: "Flexibilidad Total", icon: <Star />, desc: "Pide cambios a tu web cuando quieras. Tu visión evoluciona y nosotros contigo." }
               ].map((item, i) => (
                 <motion.div 
@@ -310,7 +320,7 @@ export default function App() {
               LISTA DE <span className="text-gray-700 text-6xl md:text-8xl">PRECIOS</span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto font-light">
-              Sin sorpresas ni costos ocultos. Tarifas adaptadas a startups y negocios que buscan impacto real.
+              Sin sorpresas ni costos ocultos. Valores pensados para emprendimientos, marcas personales y negocios que quieren crecer.
             </p>
           </motion.div>
         </div>
@@ -320,28 +330,28 @@ export default function App() {
             {[
               { 
                 title: "Desarrollo Web", 
-                price: "35$ - 50$", 
+                price: "35 USD - 50 USD", 
                 features: ["Diseño de alto impacto", "Adaptable a móviles", "Entrega ultra rápida"] 
               },
               { 
                 title: "Mantenimiento", 
-                price: "44$", 
+                price: "44 USD", 
                 period: "/ mes",
                 features: ["Incluye Dominio .com", "5 Modificaciones mensuales", "Soporte prioritario", "Primer mes 100% BONIFICADO*"] 
               },
               { 
                 title: "Modificación Grande", 
-                price: "55$ - 497$", 
+                price: "55 USD - 497 USD", 
                 features: ["Rediseño de secciones", "Nuevas funcionalidades", "Escalabilidad", "Presupuesto exacto previo"] 
               },
               { 
                 title: "Dominio .app", 
-                price: "10$", 
+                price: "10 USD", 
                 features: ["Un año de suscripción", "Ideal para webapps", "Configuración DNS", "Privacidad incluida"] 
               },
               { 
                 title: "Google Maps", 
-                price: "30$", 
+                price: "30 USD", 
                 features: ["Seguimiento local exclusivo", "Optimización de perfil", "Aumento de visibilidad", "Configuración completa"] 
               }
             ].map((plan, i) => (
@@ -417,9 +427,13 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="w-full md:w-1/3 aspect-square bg-zinc-950 rounded-full border border-gray-800 flex items-center justify-center p-12 overflow-hidden group"
+            className="w-full md:w-1/3 aspect-square bg-zinc-950 rounded-full border border-gray-800 overflow-hidden group shadow-2xl shadow-black/40"
           >
-            <User size={120} className="text-gray-800 group-hover:text-white transition-colors duration-500" />
+            <img
+              src={profilePhoto}
+              alt="Lorenzo, fundador de Web Testing"
+              className="h-full w-full object-cover object-[center_28%] transition-transform duration-700 group-hover:scale-105"
+            />
           </motion.div>
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
@@ -430,10 +444,10 @@ export default function App() {
             <span className="text-gray-600 uppercase text-[10px] tracking-[0.3em] font-bold block">El fundador</span>
             <h2 className="text-5xl font-black uppercase tracking-tighter italic font-display">Soy Lorenzo</h2>
             <p className="text-gray-400 text-lg leading-relaxed font-light max-w-2xl">
-              Un joven emprendedor de <span className="text-white font-medium">15 años</span> con una visión clara: revolucionar el diseño web. Mi objetivo es demostrar que la edad no es un límite para la innovación y la excelencia digital.
+              Un joven emprendedor de <span className="text-white font-medium">15 años</span> con una visión clara: crear páginas que se vean premium y ayuden a vender de verdad. Mi objetivo es demostrar que la edad no limita la innovación ni la excelencia digital.
             </p>
             <p className="text-gray-500 leading-relaxed font-light max-w-2xl">
-              En Web Testing, fusiono creatividad audaz con rapidez extrema para entregar sitios que no solo se ven bien, sino que impulsan negocios reales al siguiente nivel. Estoy aquí para construir el futuro de la web, un proyecto a la vez.
+              En Web Testing combino creatividad, velocidad y atención al detalle para entregar sitios que no solo se ven bien, sino que también transmiten confianza y convierten mejor.
             </p>
             <div className="pt-6">
               <div className="inline-block p-1 rounded-full bg-gradient-to-r from-gray-800 to-transparent">
@@ -483,7 +497,110 @@ export default function App() {
         </div>
       </footer>
     </motion.div>
-  ) : (
+  ) : showProcessPage ? (
+          <motion.div
+            key="process-page"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="min-h-screen bg-black px-6 py-16 md:px-10"
+          >
+            <div className="mx-auto max-w-6xl">
+              <button
+                onClick={() => setShowProcessPage(false)}
+                className="mb-12 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 hover:text-white transition-colors"
+              >
+                <ChevronRight className="w-4 h-4 rotate-180" /> Volver al inicio
+              </button>
+
+              <div className="mb-16 max-w-4xl space-y-6">
+                <span className="block text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-600">
+                  Método Web Testing
+                </span>
+                <h2 className="text-5xl font-black uppercase tracking-tighter italic leading-none md:text-7xl font-display">
+                  Cómo trabajamos
+                </h2>
+                <p className="max-w-2xl text-lg leading-relaxed text-gray-400 font-light">
+                  Un proceso simple, rápido y pensado para que tengas claridad desde el primer mensaje hasta la entrega final.
+                </p>
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-2">
+                {[
+                  {
+                    step: "01",
+                    title: "Primera charla",
+                    desc: "Nos escribís por WhatsApp, me contás tu negocio y vemos qué tipo de web necesitás para vender mejor."
+                  },
+                  {
+                    step: "02",
+                    title: "Dirección visual",
+                    desc: "Definimos estilo, referencias, estructura y objetivos para que el diseño tenga una identidad clara."
+                  },
+                  {
+                    step: "03",
+                    title: "Diseño y desarrollo",
+                    desc: "Construyo la página con foco en velocidad, estética premium y una experiencia cómoda en celular y desktop."
+                  },
+                  {
+                    step: "04",
+                    title: "Revisión y ajustes",
+                    desc: "Te muestro la propuesta, revisamos detalles y aplicamos cambios para que quede alineada a tu marca."
+                  },
+                  {
+                    step: "05",
+                    title: "Entrega y publicación",
+                    desc: "Dejo la web lista para salir online, con soporte inicial y posibilidad de seguir mejorándola después."
+                  },
+                  {
+                    step: "06",
+                    title: "Acompañamiento",
+                    desc: "Si querés mantenimiento o nuevas secciones, seguimos trabajando sobre la base ya creada sin arrancar de cero."
+                  }
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.step}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.08 }}
+                    className="rounded-[2rem] border border-gray-900 bg-zinc-950 p-8 md:p-10"
+                  >
+                    <div className="mb-6 text-5xl font-black tracking-tighter text-gray-800 font-display">
+                      {item.step}
+                    </div>
+                    <h3 className="mb-4 text-2xl font-bold uppercase tracking-tight text-white">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-400 leading-relaxed font-light">
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-16 flex flex-col items-start gap-5 rounded-[2rem] border border-gray-900 bg-white/[0.03] p-8 md:flex-row md:items-center md:justify-between md:p-10">
+                <div className="max-w-2xl space-y-3">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-zinc-600">
+                    ¿Listo para empezar?
+                  </p>
+                  <p className="text-xl leading-relaxed text-gray-300 font-light">
+                    Si ya tenés una idea, la transformamos en una web clara, rápida y pensada para convertir.
+                  </p>
+                </div>
+                <motion.a
+                  href="https://wa.me/5491130750355"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="btn-sweep border border-gray-800 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
+                >
+                  Empezar proyecto <MessageCircle className="w-4 h-4" fill="currentColor" />
+                </motion.a>
+              </div>
+            </div>
+          </motion.div>
+        ) : (
           <motion.div
             key="service-detail"
             initial={{ opacity: 0, y: 20 }}
