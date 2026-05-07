@@ -89,7 +89,7 @@ export default function App() {
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.1 * i }}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-zinc-400 hover:text-zinc-100 transition-colors"
               >
                 {item}
               </motion.a>
@@ -117,7 +117,7 @@ export default function App() {
                   key={item} 
                   href={item === 'PORQUÉ ELEGIRNOS' ? '#experiencia' : item === 'Sobre mí' ? '#quien-soy' : `#${item.toLowerCase()}`} 
                   onClick={() => setIsMenuOpen(false)}
-                  className="hover:text-gray-400 transition-colors"
+                  className="hover:text-zinc-200 transition-colors"
                 >
                   {item}
                 </a>
@@ -145,12 +145,12 @@ export default function App() {
               alt="Logo de Web Testing"
               className="logo-glow mx-auto mb-8 h-24 w-24 rounded-full object-cover md:h-28 md:w-28"
             />
-            <span className="inline-block px-4 py-1 border border-gray-800 text-[10px] tracking-[0.4em] uppercase mb-8 rounded-full bg-white/5 backdrop-blur-sm text-gray-400 font-medium">
+            <span className="inline-block px-4 py-1 border border-zinc-700/70 text-[10px] tracking-[0.4em] uppercase mb-8 rounded-full bg-zinc-200/6 backdrop-blur-sm text-zinc-300 font-medium">
               Diseño web premium para marcas que quieren vender más
             </span>
-            <h1 className="text-6xl md:text-[120px] font-black mb-8 leading-[0.9] tracking-tighter font-display uppercase">
+            <h1 className="headline-metal text-6xl md:text-[120px] font-black mb-8 leading-[0.9] tracking-tighter font-display uppercase">
               DISEÑO QUE <br/>
-              <span className="metal-text">
+              <span className="headline-metal">
                 TRASCIENDE
               </span>
             </h1>
@@ -198,9 +198,9 @@ export default function App() {
         <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-600"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-zinc-600"
         >
-          <div className="w-px h-12 bg-gradient-to-b from-gray-800 to-transparent"></div>
+          <div className="w-px h-12 bg-gradient-to-b from-zinc-700 to-transparent"></div>
         </motion.div>
       </section>
 
@@ -217,7 +217,7 @@ export default function App() {
             {stats.map((stat, i) => (
               <motion.div key={i} variants={itemVariants} className="space-y-2">
                 <p className="metal-text text-5xl md:text-6xl font-black tracking-tighter font-display">{stat.value}</p>
-                <p className="text-gray-500 uppercase text-[10px] tracking-[0.3em] font-bold">{stat.label}</p>
+                <p className="text-zinc-500 uppercase text-[10px] tracking-[0.3em] font-bold">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -229,11 +229,11 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
             <div className="max-w-xl">
-              <span className="text-gray-600 uppercase text-[10px] tracking-[0.3em] font-bold mb-4 block">Expertise</span>
-              <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter italic font-display">Nuestros Servicios</h2>
-              <p className="text-gray-500 leading-relaxed">Soluciones integrales para negocios que necesitan una presencia online seria, veloz y lista para cerrar ventas.</p>
+              <span className="eyebrow-metal uppercase text-[10px] tracking-[0.3em] font-bold mb-4 block">Expertise</span>
+              <h2 className="headline-metal text-5xl font-black mb-4 uppercase tracking-tighter italic font-display">Nuestros Servicios</h2>
+              <p className="copy-muted leading-relaxed">Soluciones integrales para negocios que necesitan una presencia online seria, veloz y lista para cerrar ventas.</p>
             </div>
-            <div className="h-px flex-1 bg-gray-900 mb-6 hidden md:block"></div>
+            <div className="h-px flex-1 bg-zinc-800 mb-6 hidden md:block"></div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -246,14 +246,14 @@ export default function App() {
                 viewport={{ once: true }}
                 className="silver-panel group p-10 border border-zinc-800 rounded-3xl hover:border-zinc-500 transition-all duration-500 hover:bg-zinc-900/80 relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 p-8 text-gray-900 font-display font-black text-6xl group-hover:text-gray-800 transition-colors">
+                <div className="absolute top-0 right-0 p-8 text-zinc-800 font-display font-black text-6xl group-hover:text-zinc-600 transition-colors">
                   0{i + 1}
                 </div>
-                <div className="mb-10 text-gray-500 group-hover:text-white transition-colors relative z-10">
+                <div className="mb-10 text-zinc-400 group-hover:text-zinc-100 transition-colors relative z-10">
                   {s.icon}
                 </div>
                 <h3 className="text-2xl font-bold mb-4 uppercase tracking-tight relative z-10">{s.title}</h3>
-                <p className="text-gray-500 group-hover:text-gray-400 leading-relaxed font-light relative z-10">
+                <p className="copy-muted group-hover:text-zinc-200 leading-relaxed font-light relative z-10">
                   {s.desc}
                 </p>
               </motion.div>
@@ -287,9 +287,9 @@ export default function App() {
             viewport={{ once: true }}
             className="space-y-16"
           >
-            <h2 className="text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+              <h2 className="headline-metal text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
               Por qué elegirnos <br />
-              <span className="bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-500 bg-clip-text text-transparent">
+              <span className="headline-metal">
                 excelencia digital
               </span>
             </h2>
@@ -309,7 +309,7 @@ export default function App() {
                   </div>
                   <div>
                     <h4 className="font-bold text-xl uppercase tracking-tighter mb-2">{item.title}</h4>
-                    <p className="text-zinc-300 text-sm leading-relaxed font-light">{item.desc}</p>
+                    <p className="copy-muted text-sm leading-relaxed font-light">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -327,11 +327,11 @@ export default function App() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <span className="text-zinc-600 uppercase text-[10px] tracking-[0.4em] font-bold block">Inversión Transparente</span>
-            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
-              LISTA DE <span className="text-gray-700 text-6xl md:text-8xl">PRECIOS</span>
+            <span className="eyebrow-metal uppercase text-[10px] tracking-[0.4em] font-bold block">Inversión Transparente</span>
+            <h2 className="headline-metal text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+              LISTA DE <span className="headline-metal text-6xl md:text-8xl">PRECIOS</span>
             </h2>
-            <p className="text-gray-500 max-w-2xl mx-auto font-light">
+            <p className="copy-muted max-w-2xl mx-auto font-light">
               Sin sorpresas ni costos ocultos. Valores pensados para emprendimientos, marcas personales y negocios que quieren crecer.
             </p>
           </motion.div>
@@ -377,15 +377,15 @@ export default function App() {
               className="silver-panel border border-zinc-800 p-10 rounded-[2.5rem] flex flex-col justify-between group hover:border-zinc-500 transition-colors"
               >
                 <div className="space-y-8">
-                  <h3 className="text-zinc-500 uppercase text-[10px] tracking-[0.3em] font-bold">{plan.title}</h3>
+                  <h3 className="text-zinc-400 uppercase text-[10px] tracking-[0.3em] font-bold">{plan.title}</h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-black italic font-display tracking-tighter text-white">{plan.price}</span>
-                    {plan.period && <span className="text-zinc-600 font-bold uppercase text-[10px] tracking-widest">{plan.period}</span>}
+                    <span className="headline-metal text-5xl font-black italic font-display tracking-tighter">{plan.price}</span>
+                    {plan.period && <span className="text-zinc-500 font-bold uppercase text-[10px] tracking-widest">{plan.period}</span>}
                   </div>
-                  <ul className="space-y-4 pt-4 border-t border-gray-900">
+                  <ul className="space-y-4 pt-4 border-t border-zinc-800">
                     {plan.features.map((f, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-sm text-gray-500 group-hover:text-gray-400 transition-colors font-light italic">
-                        <div className="w-1.5 h-1.5 bg-gray-800 rounded-full group-hover:bg-white transition-colors" />
+                      <li key={idx} className="flex items-center gap-3 text-sm text-zinc-300/80 group-hover:text-zinc-200 transition-colors font-light italic">
+                        <div className="w-1.5 h-1.5 bg-zinc-600 rounded-full group-hover:bg-zinc-100 transition-colors" />
                         {f}
                       </li>
                     ))}
@@ -404,18 +404,18 @@ export default function App() {
               <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                 <Gift className="text-white" size={32} />
               </div>
-              <h3 className="text-2xl font-black uppercase tracking-tighter italic font-display text-white">BONO DE BIENVENIDA</h3>
-              <p className="text-gray-500 text-sm font-light leading-relaxed italic">
+              <h3 className="headline-metal text-2xl font-black uppercase tracking-tighter italic font-display">BONO DE BIENVENIDA</h3>
+              <p className="copy-muted text-sm font-light leading-relaxed italic">
                 *El primer mes las modificaciones y el mantenimiento <span className="text-white font-medium">NO TIENEN COSTO</span>. Solo abonas el dominio.
               </p>
-              <p className="text-xs text-zinc-600 font-bold uppercase tracking-widest leading-relaxed">
+              <p className="text-xs text-zinc-500 font-bold uppercase tracking-widest leading-relaxed">
                 (Las modificaciones pequeñas nunca cuentan como cupo mensual)
               </p>
             </motion.div>
           </div>
 
           <div className="mt-20 flex flex-col items-center gap-8 text-center pt-20 border-t border-gray-900/50">
-            <p className="text-gray-400 text-xl font-light italic max-w-3xl leading-relaxed">
+            <p className="text-zinc-300 text-xl font-light italic max-w-3xl leading-relaxed">
               ¿Tenés un proyecto más grande o dudas sobre los planes? Consultanos por WhatsApp y armamos algo a tu medida en minutos.
             </p>
             <motion.a 
@@ -453,17 +453,17 @@ export default function App() {
             viewport={{ once: true }}
             className="flex-1 space-y-6"
           >
-            <span className="text-gray-600 uppercase text-[10px] tracking-[0.3em] font-bold block">El fundador</span>
-            <h2 className="text-5xl font-black uppercase tracking-tighter italic font-display">Soy Lorenzo</h2>
-            <p className="text-gray-400 text-lg leading-relaxed font-light max-w-2xl">
+            <span className="eyebrow-metal uppercase text-[10px] tracking-[0.3em] font-bold block">El fundador</span>
+            <h2 className="headline-metal text-5xl font-black uppercase tracking-tighter italic font-display">Soy Lorenzo</h2>
+            <p className="text-zinc-300 text-lg leading-relaxed font-light max-w-2xl">
               Un joven emprendedor de <span className="text-white font-medium">15 años</span> con una visión clara: crear páginas que se vean premium y ayuden a vender de verdad. Mi objetivo es demostrar que la edad no limita la innovación ni la excelencia digital.
             </p>
-            <p className="text-gray-500 leading-relaxed font-light max-w-2xl">
+            <p className="copy-muted leading-relaxed font-light max-w-2xl">
               En Web Testing combino creatividad, velocidad y atención al detalle para entregar sitios que no solo se ven bien, sino que también transmiten confianza y convierten mejor.
             </p>
             <div className="pt-6">
-              <div className="inline-block p-1 rounded-full bg-gradient-to-r from-gray-800 to-transparent">
-                <div className="bg-black px-6 py-2 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">
+              <div className="inline-block p-1 rounded-full bg-gradient-to-r from-zinc-700 to-transparent">
+                <div className="bg-black px-6 py-2 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-300">
                   Fundador de Web Testing
                 </div>
               </div>
@@ -483,7 +483,7 @@ export default function App() {
             />
             <span className="metal-text text-xl font-bold tracking-tighter uppercase font-display">Web Testing</span>
           </div>
-          <p className="text-gray-700 text-[10px] tracking-[0.35em] uppercase font-bold text-center">
+          <p className="text-zinc-500 text-[10px] tracking-[0.35em] uppercase font-bold text-center">
             © 2026 WEB TESTING — PÁGINA 100% HECHA CON WEB TESTING Y NUESTROS SERVICIOS
           </p>
           <div className="flex gap-10 items-center">
@@ -492,7 +492,7 @@ export default function App() {
               target="_blank" 
               rel="noopener noreferrer" 
               whileHover={{ y: -2, color: "#fff" }}
-              className="text-gray-600 transition-colors text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2"
+              className="text-zinc-400 transition-colors text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2"
             >
               <Instagram size={14} />
               Instagram
@@ -502,7 +502,7 @@ export default function App() {
               target="_blank" 
               rel="noopener noreferrer" 
               whileHover={{ y: -2, color: "#fff" }}
-              className="text-gray-600 transition-colors text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2"
+              className="text-zinc-400 transition-colors text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2"
             >
               <MessageCircle size={14} fill="currentColor" />
               WhatsApp
@@ -522,19 +522,19 @@ export default function App() {
             <div className="mx-auto max-w-6xl">
               <button
                 onClick={() => setShowProcessPage(false)}
-                className="mb-12 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 hover:text-white transition-colors"
+                className="mb-12 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 hover:text-white transition-colors"
               >
                 <ChevronRight className="w-4 h-4 rotate-180" /> Volver al inicio
               </button>
 
               <div className="mb-16 max-w-4xl space-y-6">
-                <span className="block text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-600">
+                <span className="block text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-500">
                   Método Web Testing
                 </span>
-                <h2 className="text-5xl font-black uppercase tracking-tighter italic leading-none md:text-7xl font-display">
+                <h2 className="headline-metal text-5xl font-black uppercase tracking-tighter italic leading-none md:text-7xl font-display">
                   Cómo trabajamos
                 </h2>
-                <p className="max-w-2xl text-lg leading-relaxed text-gray-400 font-light">
+                <p className="max-w-2xl text-lg leading-relaxed text-zinc-300 font-light">
                   Un proceso simple, rápido y pensado para que tengas claridad desde el primer mensaje hasta la entrega final.
                 </p>
               </div>
@@ -577,27 +577,27 @@ export default function App() {
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.08 }}
-                    className="rounded-[2rem] border border-gray-900 bg-zinc-950 p-8 md:p-10"
+                    className="silver-panel rounded-[2rem] border border-zinc-800 p-8 md:p-10"
                   >
-                    <div className="mb-6 text-5xl font-black tracking-tighter text-gray-800 font-display">
+                    <div className="mb-6 text-5xl font-black tracking-tighter text-zinc-600 font-display">
                       {item.step}
                     </div>
                     <h3 className="mb-4 text-2xl font-bold uppercase tracking-tight text-white">
                       {item.title}
                     </h3>
-                    <p className="text-gray-400 leading-relaxed font-light">
+                    <p className="text-zinc-300 leading-relaxed font-light">
                       {item.desc}
                     </p>
                   </motion.div>
                 ))}
               </div>
 
-              <div className="mt-16 flex flex-col items-start gap-5 rounded-[2rem] border border-gray-900 bg-white/[0.03] p-8 md:flex-row md:items-center md:justify-between md:p-10">
+              <div className="silver-panel mt-16 flex flex-col items-start gap-5 rounded-[2rem] border border-zinc-800 p-8 md:flex-row md:items-center md:justify-between md:p-10">
                 <div className="max-w-2xl space-y-3">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-zinc-600">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-zinc-500">
                     ¿Listo para empezar?
                   </p>
-                  <p className="text-xl leading-relaxed text-gray-300 font-light">
+                  <p className="text-xl leading-relaxed text-zinc-200 font-light">
                     Si ya tenés una idea, la transformamos en una web clara, rápida y pensada para convertir.
                   </p>
                 </div>
@@ -607,7 +607,7 @@ export default function App() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="btn-sweep border border-gray-800 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
+                  className="btn-sweep border border-zinc-600 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
                 >
                   Empezar proyecto <MessageCircle className="w-4 h-4" fill="currentColor" />
                 </motion.a>
@@ -625,31 +625,31 @@ export default function App() {
             <div className="max-w-3xl w-full">
               <button 
                 onClick={() => setSelectedService(null)}
-                className="mb-12 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 hover:text-white transition-colors"
+                className="mb-12 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 hover:text-white transition-colors"
               >
                 <ChevronRight className="w-4 h-4 rotate-180" /> Volver al inicio
               </button>
               
               <div className="space-y-12">
                 {selectedService.icon && (
-                  <div className="p-6 bg-white/5 w-fit rounded-3xl text-white">
+                  <div className="p-6 bg-zinc-100/6 w-fit rounded-3xl text-white border border-zinc-700/40">
                     {selectedService.icon}
                   </div>
                 )}
                 
                 <div className="space-y-4">
-                  <span className="text-zinc-600 uppercase text-[10px] tracking-[0.4em] font-bold block">Información Detallada</span>
-                  <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+                  <span className="text-zinc-500 uppercase text-[0.4em] font-bold block">Información Detallada</span>
+                  <h2 className="headline-metal text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
                     {selectedService.title}
                   </h2>
                 </div>
                 
-                <div className="p-10 border border-gray-800 rounded-[3rem] bg-zinc-950/50 space-y-8">
-                  <p className="text-gray-400 text-xl leading-relaxed font-light">
+                <div className="silver-panel p-10 border border-zinc-800 rounded-[3rem] space-y-8">
+                  <p className="text-zinc-300 text-xl leading-relaxed font-light">
                     Para obtener información técnica detallada, ejemplos de implementación y una propuesta personalizada sobre <span className="text-white font-medium">{selectedService.title}</span>, por favor contáctanos directamente.
                   </p>
                   
-                  <div className="pt-8 border-t border-gray-900">
+                  <div className="pt-8 border-t border-zinc-800">
                     <h4 className="text-xl font-bold uppercase tracking-tight mb-6 italic">¿LISTO PARA EMPEZAR?</h4>
                     <motion.a 
                       href="https://wa.me/5491130750355"

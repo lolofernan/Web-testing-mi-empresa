@@ -38,6 +38,19 @@
   @apply text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-500;
 }
 
+.headline-metal {
+  @apply text-transparent bg-clip-text bg-gradient-to-b from-zinc-50 via-zinc-100 to-zinc-500;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.copy-muted {
+  @apply text-zinc-300/82;
+}
+
+.eyebrow-metal {
+  @apply text-zinc-500;
+}
+
 .silver-panel {
   background: linear-gradient(180deg, rgba(28, 29, 31, 0.92) 0%, rgba(15, 15, 16, 0.92) 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
