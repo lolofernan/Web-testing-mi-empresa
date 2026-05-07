@@ -128,7 +128,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden border-b border-zinc-800/70">
+      <section id="inicio" className="hero-light relative h-screen flex items-center justify-center overflow-hidden border-b border-zinc-800/70">
         <div className="absolute inset-0 z-0 opacity-50">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(232,236,241,0.22),transparent_28%),radial-gradient(circle_at_20%_80%,rgba(147,151,159,0.15),transparent_24%),linear-gradient(180deg,#070707_0%,#111214_58%,#050505_100%)]"></div>
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-15"></div>
@@ -148,7 +148,7 @@ export default function App() {
             <span className="inline-block px-4 py-1 border border-zinc-700/70 text-[10px] tracking-[0.4em] uppercase mb-8 rounded-full bg-zinc-200/6 backdrop-blur-sm text-zinc-300 font-medium">
               Diseño web premium para marcas que quieren vender más
             </span>
-            <h1 className="headline-metal text-6xl md:text-[120px] font-black mb-8 leading-[0.9] tracking-tighter font-display uppercase">
+            <h1 className="title-glow headline-metal text-6xl md:text-[120px] font-black mb-8 leading-[0.9] tracking-tighter font-display uppercase">
               DISEÑO QUE <br/>
               <span className="headline-metal">
                 TRASCIENDE
@@ -230,7 +230,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
             <div className="max-w-xl">
               <span className="eyebrow-metal uppercase text-[10px] tracking-[0.3em] font-bold mb-4 block">Expertise</span>
-              <h2 className="headline-metal text-5xl font-black mb-4 uppercase tracking-tighter italic font-display">Nuestros Servicios</h2>
+              <h2 className="title-glow headline-metal text-5xl font-black mb-4 uppercase tracking-tighter italic font-display">Nuestros Servicios</h2>
               <p className="copy-muted leading-relaxed">Soluciones integrales para negocios que necesitan una presencia online seria, veloz y lista para cerrar ventas.</p>
             </div>
             <div className="h-px flex-1 bg-zinc-800 mb-6 hidden md:block"></div>
@@ -287,7 +287,7 @@ export default function App() {
             viewport={{ once: true }}
             className="space-y-16"
           >
-              <h2 className="headline-metal text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+              <h2 className="title-glow headline-metal text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
               Por qué elegirnos <br />
               <span className="headline-metal">
                 excelencia digital
@@ -328,7 +328,7 @@ export default function App() {
             className="space-y-4"
           >
             <span className="eyebrow-metal uppercase text-[10px] tracking-[0.4em] font-bold block">Inversión Transparente</span>
-            <h2 className="headline-metal text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+            <h2 className="title-glow headline-metal text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
               LISTA DE <span className="headline-metal text-6xl md:text-8xl">PRECIOS</span>
             </h2>
             <p className="copy-muted max-w-2xl mx-auto font-light">
@@ -404,7 +404,7 @@ export default function App() {
               <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                 <Gift className="text-white" size={32} />
               </div>
-              <h3 className="headline-metal text-2xl font-black uppercase tracking-tighter italic font-display">BONO DE BIENVENIDA</h3>
+              <h3 className="title-glow headline-metal text-2xl font-black uppercase tracking-tighter italic font-display">BONO DE BIENVENIDA</h3>
               <p className="copy-muted text-sm font-light leading-relaxed italic">
                 *El primer mes las modificaciones y el mantenimiento <span className="text-white font-medium">NO TIENEN COSTO</span>. Solo abonas el dominio.
               </p>
@@ -454,7 +454,7 @@ export default function App() {
             className="flex-1 space-y-6"
           >
             <span className="eyebrow-metal uppercase text-[10px] tracking-[0.3em] font-bold block">El fundador</span>
-            <h2 className="headline-metal text-5xl font-black uppercase tracking-tighter italic font-display">Soy Lorenzo</h2>
+            <h2 className="title-glow headline-metal text-5xl font-black uppercase tracking-tighter italic font-display">Soy Lorenzo</h2>
             <p className="text-zinc-300 text-lg leading-relaxed font-light max-w-2xl">
               Un joven emprendedor de <span className="text-white font-medium">15 años</span> con una visión clara: crear páginas que se vean premium y ayuden a vender de verdad. Mi objetivo es demostrar que la edad no limita la innovación ni la excelencia digital.
             </p>
@@ -531,7 +531,7 @@ export default function App() {
                 <span className="block text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-500">
                   Método Web Testing
                 </span>
-                <h2 className="headline-metal text-5xl font-black uppercase tracking-tighter italic leading-none md:text-7xl font-display">
+                <h2 className="title-glow headline-metal text-5xl font-black uppercase tracking-tighter italic leading-none md:text-7xl font-display">
                   Cómo trabajamos
                 </h2>
                 <p className="max-w-2xl text-lg leading-relaxed text-zinc-300 font-light">
@@ -639,7 +639,7 @@ export default function App() {
                 
                 <div className="space-y-4">
                   <span className="text-zinc-500 uppercase text-[0.4em] font-bold block">Información Detallada</span>
-                  <h2 className="headline-metal text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+                  <h2 className="title-glow headline-metal text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
                     {selectedService.title}
                   </h2>
                 </div>
