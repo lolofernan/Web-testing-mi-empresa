@@ -289,7 +289,9 @@ export default function App() {
           >
             <h2 className="text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
               Por qué elegirnos <br />
-              <span className="metal-text">excelencia digital</span>
+              <span className="bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-500 bg-clip-text text-transparent">
+                excelencia digital
+              </span>
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {[
@@ -302,10 +304,12 @@ export default function App() {
                   whileHover={{ y: -10 }}
                   className="silver-panel flex flex-col items-center gap-4 p-8 rounded-3xl transition-colors border border-zinc-800"
                 >
-                  <div className="text-zinc-100 p-4 bg-zinc-100/8 rounded-full border border-zinc-700/40">{item.icon}</div>
+                  <div className="text-zinc-100 p-4 bg-gradient-to-b from-zinc-200/10 to-zinc-500/5 rounded-full border border-zinc-600/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                    {item.icon}
+                  </div>
                   <div>
                     <h4 className="font-bold text-xl uppercase tracking-tighter mb-2">{item.title}</h4>
-                    <p className="text-zinc-300/80 text-sm leading-relaxed font-light">{item.desc}</p>
+                    <p className="text-zinc-300 text-sm leading-relaxed font-light">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
