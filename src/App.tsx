@@ -66,19 +66,19 @@ export default function App() {
             transition={{ duration: 0.5 }}
           >
             {/* Navegación */}
-            <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/85 backdrop-blur-md border-b border-zinc-700/40 py-4' : 'bg-transparent py-6'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/85 backdrop-blur-md border-b border-zinc-700/40 py-3 md:py-4' : 'bg-transparent py-4 md:py-6'}`}>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
           <motion.div 
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            className="flex items-center gap-3"
+            className="flex items-center gap-2 md:gap-3"
           >
             <img
               src={brandLogo}
               alt="Logo de Web Testing"
-              className="logo-glow h-11 w-11 rounded-full object-cover"
+              className="logo-glow h-9 w-9 md:h-11 md:w-11 rounded-full object-cover"
             />
-            <span className="metal-text text-xl font-bold tracking-tighter uppercase font-display">Web Testing</span>
+            <span className="metal-text text-lg md:text-xl font-bold tracking-tighter uppercase font-display">Web Testing</span>
           </motion.div>
           
           <div className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
@@ -109,7 +109,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-black pt-24 px-6 md:hidden"
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-md pt-24 px-6 md:hidden"
           >
             <div className="flex flex-col gap-8 text-2xl font-bold uppercase tracking-tighter">
               {['Inicio', 'PORQUÉ ELEGIRNOS', 'Sobre mí'].map((item) => (
@@ -128,13 +128,13 @@ export default function App() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section id="inicio" className="hero-light relative h-screen flex items-center justify-center overflow-hidden border-b border-zinc-800/70">
+      <section id="inicio" className="hero-light relative min-h-screen md:h-screen flex items-center justify-center overflow-hidden border-b border-zinc-800/70">
         <div className="absolute inset-0 z-0 opacity-50">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(232,236,241,0.22),transparent_28%),radial-gradient(circle_at_20%_80%,rgba(147,151,159,0.15),transparent_24%),linear-gradient(180deg,#070707_0%,#111214_58%,#050505_100%)]"></div>
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-15"></div>
         </div>
         
-        <div className="relative z-10 text-center px-6 max-w-5xl">
+        <div className="relative z-10 text-center px-4 pt-24 pb-16 md:px-6 md:pt-28 md:pb-10 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -143,26 +143,26 @@ export default function App() {
             <img
               src={brandLogo}
               alt="Logo de Web Testing"
-              className="logo-glow mx-auto mb-8 h-24 w-24 rounded-full object-cover md:h-28 md:w-28"
+              className="logo-glow mx-auto mb-6 md:mb-8 h-20 w-20 rounded-full object-cover md:h-28 md:w-28"
             />
-            <span className="inline-block px-4 py-1 border border-zinc-700/70 text-[10px] tracking-[0.4em] uppercase mb-8 rounded-full bg-zinc-200/6 backdrop-blur-sm text-zinc-300 font-medium">
+            <span className="inline-block max-w-[92vw] px-3 py-1.5 md:px-4 md:py-1 border border-zinc-700/70 text-[9px] md:text-[10px] tracking-[0.32em] md:tracking-[0.4em] uppercase mb-6 md:mb-8 rounded-full bg-zinc-200/6 backdrop-blur-sm text-zinc-300 font-medium leading-relaxed">
               Diseño web premium para marcas que quieren vender más
             </span>
-            <h1 className="title-glow headline-metal text-6xl md:text-[120px] font-black mb-8 leading-[0.9] tracking-tighter font-display uppercase">
+            <h1 className="title-glow headline-metal text-5xl sm:text-6xl md:text-[120px] font-black mb-6 md:mb-8 leading-[0.92] md:leading-[0.9] tracking-[-0.04em] md:tracking-tighter font-display uppercase">
               DISEÑO QUE <br/>
               <span className="headline-metal">
                 TRASCIENDE
               </span>
             </h1>
-            <p className="text-zinc-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+            <p className="text-zinc-300 text-base sm:text-lg md:text-xl mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed font-light">
               Diseñamos experiencias digitales rápidas, elegantes y pensadas para convertir visitas en consultas reales.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-stretch sm:items-center">
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-sweep border border-zinc-600 text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs"
+                className="btn-sweep w-full sm:w-auto border border-zinc-600 text-white px-6 md:px-10 py-4 md:py-5 rounded-full font-bold uppercase tracking-[0.2em] md:tracking-widest text-[11px] md:text-xs"
               >
                 Nuestros Servicios
               </motion.button>
@@ -170,7 +170,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('presupuesto')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-sweep border border-zinc-600 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs"
+                className="btn-sweep w-full sm:w-auto border border-zinc-600 px-6 md:px-10 py-4 md:py-5 rounded-full font-bold uppercase tracking-[0.2em] md:tracking-widest text-[11px] md:text-xs"
               >
                 Presupuesto
               </motion.button>
@@ -178,7 +178,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('quien-soy')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-sweep border border-zinc-600 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
+                className="btn-sweep w-full sm:w-auto border border-zinc-600 px-6 md:px-10 py-4 md:py-5 rounded-full font-bold uppercase tracking-[0.2em] md:tracking-widest text-[11px] md:text-xs flex items-center justify-center gap-2"
               >
                 Quiénes están detrás <ChevronRight className="w-3 h-3" />
               </motion.button>
@@ -186,7 +186,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowProcessPage(true)}
-                className="btn-sweep border border-zinc-600 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
+                className="btn-sweep w-full sm:w-auto border border-zinc-600 px-6 md:px-10 py-4 md:py-5 rounded-full font-bold uppercase tracking-[0.2em] md:tracking-widest text-[11px] md:text-xs flex items-center justify-center gap-2"
               >
                 Cómo trabajamos <ChevronRight className="w-3 h-3" />
               </motion.button>
@@ -198,15 +198,15 @@ export default function App() {
         <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-zinc-600"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-600 hidden md:block"
         >
           <div className="w-px h-12 bg-gradient-to-b from-zinc-700 to-transparent"></div>
         </motion.div>
       </section>
 
       {/* Stats Section */}
-      <section className="bg-black py-24 relative z-10 border-b border-zinc-800/60">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-black py-16 md:py-24 relative z-10 border-b border-zinc-800/60">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
           <motion.div 
             variants={containerVariants}
             initial="hidden"
@@ -225,18 +225,18 @@ export default function App() {
       </section>
 
       {/* Servicios */}
-      <section id="servicios" className="py-32 bg-zinc-950/90">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+      <section id="servicios" className="py-20 md:py-32 bg-zinc-950/90">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-6">
             <div className="max-w-xl">
               <span className="eyebrow-metal uppercase text-[10px] tracking-[0.3em] font-bold mb-4 block">Expertise</span>
-              <h2 className="title-glow headline-metal slant-metal text-5xl font-black mb-4 uppercase tracking-tighter font-display">Nuestros Servicios</h2>
+              <h2 className="title-glow headline-metal slant-metal text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter font-display">Nuestros Servicios</h2>
               <p className="copy-muted leading-relaxed">Soluciones integrales para negocios que necesitan una presencia online seria, veloz y lista para cerrar ventas.</p>
             </div>
             <div className="h-px flex-1 bg-zinc-800 mb-6 hidden md:block"></div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-5 md:gap-8">
             {services.map((s, i) => (
               <motion.div 
                 key={i} 
@@ -244,7 +244,7 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="silver-panel group p-10 border border-zinc-800 rounded-3xl hover:border-zinc-500 transition-all duration-500 hover:bg-zinc-900/80 relative overflow-hidden"
+                className="silver-panel group p-6 md:p-10 border border-zinc-800 rounded-[1.8rem] md:rounded-3xl hover:border-zinc-500 transition-all duration-500 hover:bg-zinc-900/80 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-8 text-zinc-800 font-display font-black text-6xl group-hover:text-zinc-600 transition-colors">
                   0{i + 1}
@@ -252,7 +252,7 @@ export default function App() {
                 <div className="mb-10 text-zinc-400 group-hover:text-zinc-100 transition-colors relative z-10">
                   {s.icon}
                 </div>
-                <h3 className="text-2xl font-bold mb-4 uppercase tracking-tight relative z-10">{s.title}</h3>
+                <h3 className="text-xl md:text-2xl font-bold mb-4 uppercase tracking-tight relative z-10">{s.title}</h3>
                 <p className="copy-muted group-hover:text-zinc-200 leading-relaxed font-light relative z-10">
                   {s.desc}
                 </p>
@@ -264,13 +264,13 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex justify-center mt-20"
+            className="flex justify-center mt-12 md:mt-20"
           >
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedService({ title: "Nuestros Servicios", desc: "Información detallada sobre todos nuestros planes y soluciones digitales.", icon: null })}
-                className="btn-sweep border border-zinc-600 text-white px-16 py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] flex items-center gap-4 transition-all"
+                className="btn-sweep w-full sm:w-auto border border-zinc-600 text-white px-8 md:px-16 py-5 md:py-6 rounded-full font-black uppercase tracking-[0.24em] md:tracking-[0.3em] text-[10px] flex items-center justify-center gap-4 transition-all"
             >
               Saber más <ChevronRight className="w-5 h-5" />
             </motion.button>
@@ -279,21 +279,21 @@ export default function App() {
       </section>
 
       {/* Experiencia / Trust */}
-      <section id="experiencia" className="py-32 bg-black overflow-hidden text-center">
-        <div className="max-w-4xl mx-auto px-6">
+      <section id="experiencia" className="py-20 md:py-32 bg-black overflow-hidden text-center">
+        <div className="max-w-4xl mx-auto px-4 md:px-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-16"
+            className="space-y-10 md:space-y-16"
           >
-              <h2 className="title-glow headline-metal slant-metal text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none font-display">
+              <h2 className="title-glow headline-metal slant-metal text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none font-display">
               Por qué elegirnos <br />
               <span className="headline-metal">
                 excelencia digital
               </span>
             </h2>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-5 md:gap-6">
               {[
                 { title: "Rapidez Extrema", icon: <Zap />, desc: "Entregamos entre 3 - 13 días, sin comprometer la calidad." },
                 { title: "Precio competitivo", icon: <Award />, desc: "Valores claros según el alcance del proyecto, con foco en calidad y resultado." },
@@ -302,7 +302,7 @@ export default function App() {
                 <motion.div 
                   key={i} 
                   whileHover={{ y: -10 }}
-                  className="silver-panel flex flex-col items-center gap-4 p-8 rounded-3xl transition-colors border border-zinc-800"
+                  className="silver-panel flex flex-col items-center gap-4 p-6 md:p-8 rounded-[1.8rem] md:rounded-3xl transition-colors border border-zinc-800"
                 >
                   <div className="text-zinc-100 p-4 bg-gradient-to-b from-zinc-200/10 to-zinc-500/5 rounded-full border border-zinc-600/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
                     {item.icon}
@@ -319,8 +319,8 @@ export default function App() {
       </section>
 
       {/* Presupuesto / Precios Section */}
-      <section id="presupuesto" className="py-32 bg-zinc-950 border-t border-gray-900 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 text-center mb-20">
+      <section id="presupuesto" className="py-20 md:py-32 bg-zinc-950 border-t border-gray-900 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 text-center mb-12 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -328,7 +328,7 @@ export default function App() {
             className="space-y-4"
           >
             <span className="eyebrow-metal uppercase text-[10px] tracking-[0.4em] font-bold block">Inversión Transparente</span>
-            <h2 className="title-glow headline-metal slant-metal text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none font-display">
+            <h2 className="title-glow headline-metal slant-metal text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none font-display">
               LISTA DE <span className="headline-metal text-6xl md:text-8xl">PRECIOS</span>
             </h2>
             <p className="copy-muted max-w-2xl mx-auto font-light">
@@ -337,8 +337,8 @@ export default function App() {
           </motion.div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
             {[
               { 
                 title: "Desarrollo Web", 
@@ -374,12 +374,12 @@ export default function App() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -5 }}
-              className="silver-panel border border-zinc-800 p-10 rounded-[2.5rem] flex flex-col justify-between group hover:border-zinc-500 transition-colors"
+              className="silver-panel border border-zinc-800 p-6 md:p-10 rounded-[1.8rem] md:rounded-[2.5rem] flex flex-col justify-between group hover:border-zinc-500 transition-colors"
               >
-                <div className="space-y-8">
+                <div className="space-y-6 md:space-y-8">
                   <h3 className="text-zinc-400 uppercase text-[10px] tracking-[0.3em] font-bold">{plan.title}</h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="headline-metal slant-metal text-5xl font-black font-display tracking-tighter">{plan.price}</span>
+                    <span className="headline-metal slant-metal text-[2.6rem] sm:text-5xl font-black font-display tracking-tighter leading-none">{plan.price}</span>
                     {plan.period && <span className="text-zinc-500 font-bold uppercase text-[10px] tracking-widest">{plan.period}</span>}
                   </div>
                   <ul className="space-y-4 pt-4 border-t border-zinc-800">
@@ -399,7 +399,7 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="silver-panel border-2 border-dashed border-zinc-700 p-10 rounded-[2.5rem] flex flex-col justify-center text-center space-y-6"
+              className="silver-panel border-2 border-dashed border-zinc-700 p-6 md:p-10 rounded-[1.8rem] md:rounded-[2.5rem] flex flex-col justify-center text-center space-y-6"
             >
               <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                 <Gift className="text-white" size={32} />
@@ -414,7 +414,7 @@ export default function App() {
             </motion.div>
           </div>
 
-          <div className="mt-20 flex flex-col items-center gap-8 text-center pt-20 border-t border-gray-900/50">
+          <div className="mt-12 md:mt-20 flex flex-col items-center gap-6 md:gap-8 text-center pt-12 md:pt-20 border-t border-gray-900/50">
             <p className="text-zinc-300 text-xl font-light italic max-w-3xl leading-relaxed">
               ¿Tenés un proyecto más grande o dudas sobre los planes? Consultanos por WhatsApp y armamos algo a tu medida en minutos.
             </p>
@@ -424,7 +424,7 @@ export default function App() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-4 bg-zinc-200 text-black px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm shadow-2xl shadow-zinc-200/10 hover:bg-white transition-colors"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-4 bg-zinc-200 text-black px-8 md:px-12 py-5 md:py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm shadow-2xl shadow-zinc-200/10 hover:bg-white transition-colors"
             >
               <MessageCircle fill="currentColor" className="w-5 h-5 text-black" /> Hablar con Lorenzo
             </motion.a>
@@ -433,13 +433,13 @@ export default function App() {
       </section>
 
       {/* Quien soy Section */}
-      <section id="quien-soy" className="py-32 bg-black border-t border-gray-900">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+      <section id="quien-soy" className="py-20 md:py-32 bg-black border-t border-gray-900">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center gap-10 md:gap-16">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="w-full md:w-1/3 aspect-square bg-zinc-950 rounded-full border border-zinc-700 overflow-hidden group shadow-2xl shadow-zinc-900/40"
+            className="w-full max-w-[280px] md:max-w-none md:w-1/3 aspect-square bg-zinc-950 rounded-full border border-zinc-700 overflow-hidden group shadow-2xl shadow-zinc-900/40"
           >
             <img
               src={profilePhoto}
@@ -454,7 +454,7 @@ export default function App() {
             className="flex-1 space-y-6"
           >
             <span className="eyebrow-metal uppercase text-[10px] tracking-[0.3em] font-bold block">El fundador</span>
-            <h2 className="title-glow headline-metal slant-metal text-5xl font-black uppercase tracking-tighter font-display">Soy Lorenzo</h2>
+            <h2 className="title-glow headline-metal slant-metal text-4xl md:text-5xl font-black uppercase tracking-tighter font-display">Soy Lorenzo</h2>
             <p className="text-zinc-300 text-lg leading-relaxed font-light max-w-2xl">
               Un joven emprendedor de <span className="text-white font-medium">15 años</span> con una visión clara: crear páginas que se vean premium y ayuden a vender de verdad. Mi objetivo es demostrar que la edad no limita la innovación ni la excelencia digital.
             </p>
@@ -473,8 +473,8 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-20 border-t border-gray-900 bg-black">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
+      <footer className="py-14 md:py-20 border-t border-gray-900 bg-black">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
           <div className="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
             <img
               src={brandLogo}
@@ -486,7 +486,7 @@ export default function App() {
           <p className="text-zinc-500 text-[10px] tracking-[0.35em] uppercase font-bold text-center">
             © 2026 WEB TESTING — PÁGINA 100% HECHA CON WEB TESTING Y NUESTROS SERVICIOS
           </p>
-          <div className="flex gap-10 items-center">
+          <div className="flex gap-6 md:gap-10 items-center">
             <motion.a 
               href="https://www.instagram.com/lolo.lasnier/" 
               target="_blank" 
@@ -517,7 +517,7 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="min-h-screen bg-black px-6 py-16 md:px-10"
+            className="min-h-screen bg-black px-4 py-12 md:px-10 md:py-16"
           >
             <div className="mx-auto max-w-6xl">
               <button
@@ -527,11 +527,11 @@ export default function App() {
                 <ChevronRight className="w-4 h-4 rotate-180" /> Volver al inicio
               </button>
 
-              <div className="mb-16 max-w-4xl space-y-6">
+              <div className="mb-12 md:mb-16 max-w-4xl space-y-4 md:space-y-6">
                 <span className="block text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-500">
                   Método Web Testing
                 </span>
-                <h2 className="title-glow headline-metal slant-metal text-5xl font-black uppercase tracking-tighter leading-none md:text-7xl font-display">
+                <h2 className="title-glow headline-metal slant-metal text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none font-display">
                   Cómo trabajamos
                 </h2>
                 <p className="max-w-2xl text-lg leading-relaxed text-zinc-300 font-light">
@@ -539,7 +539,7 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="grid gap-8 md:grid-cols-2">
+              <div className="grid gap-5 md:gap-8 md:grid-cols-2">
                 {[
                   {
                     step: "01",
@@ -577,7 +577,7 @@ export default function App() {
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.08 }}
-                    className="silver-panel rounded-[2rem] border border-zinc-800 p-8 md:p-10"
+                    className="silver-panel rounded-[1.8rem] md:rounded-[2rem] border border-zinc-800 p-6 md:p-10"
                   >
                     <div className="mb-6 text-5xl font-black tracking-tighter text-zinc-600 font-display">
                       {item.step}
@@ -592,7 +592,7 @@ export default function App() {
                 ))}
               </div>
 
-              <div className="silver-panel mt-16 flex flex-col items-start gap-5 rounded-[2rem] border border-zinc-800 p-8 md:flex-row md:items-center md:justify-between md:p-10">
+              <div className="silver-panel mt-12 md:mt-16 flex flex-col items-start gap-5 rounded-[1.8rem] md:rounded-[2rem] border border-zinc-800 p-6 md:p-10 md:flex-row md:items-center md:justify-between">
                 <div className="max-w-2xl space-y-3">
                   <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-zinc-500">
                     ¿Listo para empezar?
@@ -607,7 +607,7 @@ export default function App() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="btn-sweep border border-zinc-600 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
+                  className="btn-sweep w-full sm:w-auto border border-zinc-600 px-8 md:px-10 py-4 md:py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2"
                 >
                   Empezar proyecto <MessageCircle className="w-4 h-4" fill="currentColor" />
                 </motion.a>
@@ -620,7 +620,7 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="min-h-screen flex items-center justify-center bg-black p-6"
+            className="min-h-screen flex items-center justify-center bg-black p-4 md:p-6"
           >
             <div className="max-w-3xl w-full">
               <button 
@@ -630,7 +630,7 @@ export default function App() {
                 <ChevronRight className="w-4 h-4 rotate-180" /> Volver al inicio
               </button>
               
-              <div className="space-y-12">
+              <div className="space-y-8 md:space-y-12">
                 {selectedService.icon && (
                   <div className="p-6 bg-zinc-100/6 w-fit rounded-3xl text-white border border-zinc-700/40">
                     {selectedService.icon}
@@ -639,13 +639,13 @@ export default function App() {
                 
                 <div className="space-y-4">
                   <span className="text-zinc-500 uppercase text-[0.4em] font-bold block">Información Detallada</span>
-                  <h2 className="title-glow headline-metal slant-metal text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none font-display">
+                  <h2 className="title-glow headline-metal slant-metal text-3xl sm:text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none font-display">
                     {selectedService.title}
                   </h2>
                 </div>
                 
-                <div className="silver-panel p-10 border border-zinc-800 rounded-[3rem] space-y-8">
-                  <p className="text-zinc-300 text-xl leading-relaxed font-light">
+                <div className="silver-panel p-6 md:p-10 border border-zinc-800 rounded-[2rem] md:rounded-[3rem] space-y-6 md:space-y-8">
+                  <p className="text-zinc-300 text-lg md:text-xl leading-relaxed font-light">
                     Para obtener información técnica detallada, ejemplos de implementación y una propuesta personalizada sobre <span className="text-white font-medium">{selectedService.title}</span>, por favor contáctanos directamente.
                   </p>
                   
@@ -657,7 +657,7 @@ export default function App() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-4 btn-sweep border border-zinc-600 text-white px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm"
+                    className="inline-flex w-full sm:w-auto items-center justify-center gap-4 btn-sweep border border-zinc-600 text-white px-8 md:px-12 py-5 md:py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm"
                     >
                       <MessageCircle fill="currentColor" className="w-5 h-5" /> Consultar por WhatsApp
                     </motion.a>
