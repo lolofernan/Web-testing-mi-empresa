@@ -9,11 +9,22 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [selectedService, setSelectedService] = useState<null | typeof services[0]>(null);
   const [showProcessPage, setShowProcessPage] = useState(false);
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const syncDeviceMode = () => setIsMobileDevice(mediaQuery.matches);
+
+    syncDeviceMode();
+    mediaQuery.addEventListener('change', syncDeviceMode);
+
+    return () => mediaQuery.removeEventListener('change', syncDeviceMode);
   }, []);
 
   const services = [
@@ -55,7 +66,10 @@ export default function App() {
   };
 
   return (
-    <div className="site-shell min-h-screen bg-black text-zinc-100 font-sans selection:bg-white selection:text-black">
+    <div
+      data-device={isMobileDevice ? 'mobile' : 'desktop'}
+      className="site-shell min-h-screen bg-black text-zinc-100 font-sans selection:bg-white selection:text-black"
+    >
       <AnimatePresence mode="wait">
         {!selectedService && !showProcessPage ? (
           <motion.div
@@ -128,13 +142,13 @@ export default function App() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section id="inicio" className="hero-light relative min-h-screen md:h-screen flex items-center justify-center overflow-hidden border-b border-zinc-800/70">
+      <section id="inicio" className={`hero-light relative flex items-center justify-center overflow-hidden border-b border-zinc-800/70 ${isMobileDevice ? 'min-h-screen' : 'h-screen'}`}>
         <div className="absolute inset-0 z-0 opacity-50">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(232,236,241,0.22),transparent_28%),radial-gradient(circle_at_20%_80%,rgba(147,151,159,0.15),transparent_24%),linear-gradient(180deg,#070707_0%,#111214_58%,#050505_100%)]"></div>
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-15"></div>
         </div>
         
-        <div className="relative z-10 text-center px-4 pt-24 pb-16 md:px-6 md:pt-28 md:pb-10 max-w-5xl">
+        <div className={`relative z-10 text-center max-w-5xl ${isMobileDevice ? 'px-4 pt-24 pb-16' : 'px-6 pt-28 pb-10'}`}>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -143,26 +157,26 @@ export default function App() {
             <img
               src={brandLogo}
               alt="Logo de Web Testing"
-              className="logo-glow mx-auto mb-6 md:mb-8 h-20 w-20 rounded-full object-cover md:h-28 md:w-28"
+              className={`logo-glow mx-auto rounded-full object-cover ${isMobileDevice ? 'mb-6 h-20 w-20' : 'mb-8 h-28 w-28'}`}
             />
             <span className="inline-block max-w-[92vw] px-3 py-1.5 md:px-4 md:py-1 border border-zinc-700/70 text-[9px] md:text-[10px] tracking-[0.32em] md:tracking-[0.4em] uppercase mb-6 md:mb-8 rounded-full bg-zinc-200/6 backdrop-blur-sm text-zinc-300 font-medium leading-relaxed">
               Diseño web premium para marcas que quieren vender más
             </span>
-            <h1 className="title-glow headline-metal text-5xl sm:text-6xl md:text-[120px] font-black mb-6 md:mb-8 leading-[0.92] md:leading-[0.9] tracking-[-0.04em] md:tracking-tighter font-display uppercase">
+            <h1 className={`title-glow headline-metal font-black font-display uppercase ${isMobileDevice ? 'text-5xl leading-[0.92] tracking-[-0.04em] mb-6' : 'text-[120px] leading-[0.9] tracking-tighter mb-8'}`}>
               DISEÑO QUE <br/>
               <span className="headline-metal">
                 TRASCIENDE
               </span>
             </h1>
-            <p className="text-zinc-300 text-base sm:text-lg md:text-xl mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+            <p className={`text-zinc-300 max-w-2xl mx-auto leading-relaxed font-light ${isMobileDevice ? 'text-base mb-8' : 'text-xl mb-12'}`}>
               Diseñamos experiencias digitales rápidas, elegantes y pensadas para convertir visitas en consultas reales.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-stretch sm:items-center">
+            <div className={`flex justify-center ${isMobileDevice ? 'flex-col gap-3 items-stretch' : 'flex-row gap-4 items-center'}`}>
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-sweep w-full sm:w-auto border border-zinc-600 text-white px-6 md:px-10 py-4 md:py-5 rounded-full font-bold uppercase tracking-[0.2em] md:tracking-widest text-[11px] md:text-xs"
+                className={`btn-sweep border border-zinc-600 text-white rounded-full font-bold uppercase ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'px-10 py-5 tracking-widest text-xs'}`}
               >
                 Nuestros Servicios
               </motion.button>
@@ -170,7 +184,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('presupuesto')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-sweep w-full sm:w-auto border border-zinc-600 px-6 md:px-10 py-4 md:py-5 rounded-full font-bold uppercase tracking-[0.2em] md:tracking-widest text-[11px] md:text-xs"
+                className={`btn-sweep border border-zinc-600 rounded-full font-bold uppercase ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'px-10 py-5 tracking-widest text-xs'}`}
               >
                 Presupuesto
               </motion.button>
@@ -178,7 +192,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('quien-soy')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-sweep w-full sm:w-auto border border-zinc-600 px-6 md:px-10 py-4 md:py-5 rounded-full font-bold uppercase tracking-[0.2em] md:tracking-widest text-[11px] md:text-xs flex items-center justify-center gap-2"
+                className={`btn-sweep border border-zinc-600 rounded-full font-bold uppercase flex items-center justify-center gap-2 ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'px-10 py-5 tracking-widest text-xs'}`}
               >
                 Quiénes están detrás <ChevronRight className="w-3 h-3" />
               </motion.button>
@@ -186,7 +200,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowProcessPage(true)}
-                className="btn-sweep w-full sm:w-auto border border-zinc-600 px-6 md:px-10 py-4 md:py-5 rounded-full font-bold uppercase tracking-[0.2em] md:tracking-widest text-[11px] md:text-xs flex items-center justify-center gap-2"
+                className={`btn-sweep border border-zinc-600 rounded-full font-bold uppercase flex items-center justify-center gap-2 ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'px-10 py-5 tracking-widest text-xs'}`}
               >
                 Cómo trabajamos <ChevronRight className="w-3 h-3" />
               </motion.button>
@@ -205,8 +219,8 @@ export default function App() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-black py-16 md:py-24 relative z-10 border-b border-zinc-800/60">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <section className={`bg-black relative z-10 border-b border-zinc-800/60 ${isMobileDevice ? 'py-16' : 'py-24'}`}>
+        <div className={`max-w-7xl mx-auto ${isMobileDevice ? 'px-4' : 'px-6'}`}>
           <motion.div 
             variants={containerVariants}
             initial="hidden"
@@ -225,18 +239,18 @@ export default function App() {
       </section>
 
       {/* Servicios */}
-      <section id="servicios" className="py-20 md:py-32 bg-zinc-950/90">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-6">
+      <section id="servicios" className={`bg-zinc-950/90 ${isMobileDevice ? 'py-20' : 'py-32'}`}>
+        <div className={`max-w-7xl mx-auto ${isMobileDevice ? 'px-4' : 'px-6'}`}>
+          <div className={`flex gap-6 ${isMobileDevice ? 'flex-col items-start mb-12' : 'flex-col md:flex-row justify-between items-end mb-20'}`}>
             <div className="max-w-xl">
               <span className="eyebrow-metal uppercase text-[10px] tracking-[0.3em] font-bold mb-4 block">Expertise</span>
-              <h2 className="title-glow headline-metal slant-metal text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter font-display">Nuestros Servicios</h2>
+              <h2 className={`title-glow headline-metal slant-metal font-black mb-4 uppercase tracking-tighter font-display ${isMobileDevice ? 'text-4xl' : 'text-5xl'}`}>Nuestros Servicios</h2>
               <p className="copy-muted leading-relaxed">Soluciones integrales para negocios que necesitan una presencia online seria, veloz y lista para cerrar ventas.</p>
             </div>
             <div className="h-px flex-1 bg-zinc-800 mb-6 hidden md:block"></div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5 md:gap-8">
+          <div className={`grid ${isMobileDevice ? 'gap-5' : 'md:grid-cols-3 gap-8'}`}>
             {services.map((s, i) => (
               <motion.div 
                 key={i} 
@@ -244,7 +258,7 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="silver-panel group p-6 md:p-10 border border-zinc-800 rounded-[1.8rem] md:rounded-3xl hover:border-zinc-500 transition-all duration-500 hover:bg-zinc-900/80 relative overflow-hidden"
+                className={`silver-panel group border border-zinc-800 hover:border-zinc-500 transition-all duration-500 hover:bg-zinc-900/80 relative overflow-hidden ${isMobileDevice ? 'p-6 rounded-[1.8rem]' : 'p-10 rounded-3xl'}`}
               >
                 <div className="absolute top-0 right-0 p-8 text-zinc-800 font-display font-black text-6xl group-hover:text-zinc-600 transition-colors">
                   0{i + 1}
@@ -252,7 +266,7 @@ export default function App() {
                 <div className="mb-10 text-zinc-400 group-hover:text-zinc-100 transition-colors relative z-10">
                   {s.icon}
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold mb-4 uppercase tracking-tight relative z-10">{s.title}</h3>
+                <h3 className={`font-bold mb-4 uppercase tracking-tight relative z-10 ${isMobileDevice ? 'text-xl' : 'text-2xl'}`}>{s.title}</h3>
                 <p className="copy-muted group-hover:text-zinc-200 leading-relaxed font-light relative z-10">
                   {s.desc}
                 </p>
@@ -264,13 +278,13 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex justify-center mt-12 md:mt-20"
+            className={`flex justify-center ${isMobileDevice ? 'mt-12' : 'mt-20'}`}
           >
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedService({ title: "Nuestros Servicios", desc: "Información detallada sobre todos nuestros planes y soluciones digitales.", icon: null })}
-                className="btn-sweep w-full sm:w-auto border border-zinc-600 text-white px-8 md:px-16 py-5 md:py-6 rounded-full font-black uppercase tracking-[0.24em] md:tracking-[0.3em] text-[10px] flex items-center justify-center gap-4 transition-all"
+                className={`btn-sweep border border-zinc-600 text-white rounded-full font-black uppercase flex items-center justify-center gap-4 transition-all ${isMobileDevice ? 'w-full px-8 py-5 tracking-[0.24em] text-[10px]' : 'px-16 py-6 tracking-[0.3em] text-[10px]'}`}
             >
               Saber más <ChevronRight className="w-5 h-5" />
             </motion.button>
