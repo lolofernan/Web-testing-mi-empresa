@@ -176,7 +176,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                className={`btn-sweep border border-zinc-600 text-white rounded-full font-bold uppercase ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'px-10 py-5 tracking-widest text-xs'}`}
+                className={`btn-sweep border border-zinc-600 text-white rounded-full font-bold uppercase flex items-center justify-center ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'w-[260px] px-10 py-5 tracking-widest text-xs'}`}
               >
                 Nuestros Servicios
               </motion.button>
@@ -184,7 +184,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('presupuesto')?.scrollIntoView({ behavior: 'smooth' })}
-                className={`btn-sweep border border-zinc-600 rounded-full font-bold uppercase ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'px-10 py-5 tracking-widest text-xs'}`}
+                className={`btn-sweep border border-zinc-600 rounded-full font-bold uppercase flex items-center justify-center ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'w-[260px] px-10 py-5 tracking-widest text-xs'}`}
               >
                 Presupuesto
               </motion.button>
@@ -192,7 +192,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('quien-soy')?.scrollIntoView({ behavior: 'smooth' })}
-                className={`btn-sweep border border-zinc-600 rounded-full font-bold uppercase flex items-center justify-center gap-2 ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'px-10 py-5 tracking-widest text-xs'}`}
+                className={`btn-sweep border border-zinc-600 rounded-full font-bold uppercase flex items-center justify-center gap-2 ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'w-[260px] px-10 py-5 tracking-widest text-xs'}`}
               >
                 Quiénes están detrás <ChevronRight className="w-3 h-3" />
               </motion.button>
@@ -200,7 +200,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowProcessPage(true)}
-                className={`btn-sweep border border-zinc-600 rounded-full font-bold uppercase flex items-center justify-center gap-2 ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'px-10 py-5 tracking-widest text-xs'}`}
+                className={`btn-sweep border border-zinc-600 rounded-full font-bold uppercase flex items-center justify-center gap-2 ${isMobileDevice ? 'w-full px-6 py-4 tracking-[0.2em] text-[11px]' : 'w-[260px] px-10 py-5 tracking-widest text-xs'}`}
               >
                 Cómo trabajamos <ChevronRight className="w-3 h-3" />
               </motion.button>
