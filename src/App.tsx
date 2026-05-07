@@ -230,7 +230,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
             <div className="max-w-xl">
               <span className="eyebrow-metal uppercase text-[10px] tracking-[0.3em] font-bold mb-4 block">Expertise</span>
-              <h2 className="title-glow headline-metal text-5xl font-black mb-4 uppercase tracking-tighter italic font-display">Nuestros Servicios</h2>
+              <h2 className="title-glow headline-metal slant-metal text-5xl font-black mb-4 uppercase tracking-tighter font-display">Nuestros Servicios</h2>
               <p className="copy-muted leading-relaxed">Soluciones integrales para negocios que necesitan una presencia online seria, veloz y lista para cerrar ventas.</p>
             </div>
             <div className="h-px flex-1 bg-zinc-800 mb-6 hidden md:block"></div>
@@ -287,7 +287,7 @@ export default function App() {
             viewport={{ once: true }}
             className="space-y-16"
           >
-              <h2 className="title-glow headline-metal text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+              <h2 className="title-glow headline-metal slant-metal text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none font-display">
               Por qué elegirnos <br />
               <span className="headline-metal">
                 excelencia digital
@@ -328,7 +328,7 @@ export default function App() {
             className="space-y-4"
           >
             <span className="eyebrow-metal uppercase text-[10px] tracking-[0.4em] font-bold block">Inversión Transparente</span>
-            <h2 className="title-glow headline-metal text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+            <h2 className="title-glow headline-metal slant-metal text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none font-display">
               LISTA DE <span className="headline-metal text-6xl md:text-8xl">PRECIOS</span>
             </h2>
             <p className="copy-muted max-w-2xl mx-auto font-light">
@@ -379,7 +379,7 @@ export default function App() {
                 <div className="space-y-8">
                   <h3 className="text-zinc-400 uppercase text-[10px] tracking-[0.3em] font-bold">{plan.title}</h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="headline-metal text-5xl font-black italic font-display tracking-tighter">{plan.price}</span>
+                    <span className="headline-metal slant-metal text-5xl font-black font-display tracking-tighter">{plan.price}</span>
                     {plan.period && <span className="text-zinc-500 font-bold uppercase text-[10px] tracking-widest">{plan.period}</span>}
                   </div>
                   <ul className="space-y-4 pt-4 border-t border-zinc-800">
@@ -404,7 +404,7 @@ export default function App() {
               <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                 <Gift className="text-white" size={32} />
               </div>
-              <h3 className="title-glow headline-metal text-2xl font-black uppercase tracking-tighter italic font-display">BONO DE BIENVENIDA</h3>
+              <h3 className="title-glow headline-metal slant-metal text-2xl font-black uppercase tracking-tighter font-display">BONO DE BIENVENIDA</h3>
               <p className="copy-muted text-sm font-light leading-relaxed italic">
                 *El primer mes las modificaciones y el mantenimiento <span className="text-white font-medium">NO TIENEN COSTO</span>. Solo abonas el dominio.
               </p>
@@ -454,7 +454,7 @@ export default function App() {
             className="flex-1 space-y-6"
           >
             <span className="eyebrow-metal uppercase text-[10px] tracking-[0.3em] font-bold block">El fundador</span>
-            <h2 className="title-glow headline-metal text-5xl font-black uppercase tracking-tighter italic font-display">Soy Lorenzo</h2>
+            <h2 className="title-glow headline-metal slant-metal text-5xl font-black uppercase tracking-tighter font-display">Soy Lorenzo</h2>
             <p className="text-zinc-300 text-lg leading-relaxed font-light max-w-2xl">
               Un joven emprendedor de <span className="text-white font-medium">15 años</span> con una visión clara: crear páginas que se vean premium y ayuden a vender de verdad. Mi objetivo es demostrar que la edad no limita la innovación ni la excelencia digital.
             </p>
@@ -531,7 +531,7 @@ export default function App() {
                 <span className="block text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-500">
                   Método Web Testing
                 </span>
-                <h2 className="title-glow headline-metal text-5xl font-black uppercase tracking-tighter italic leading-none md:text-7xl font-display">
+                <h2 className="title-glow headline-metal slant-metal text-5xl font-black uppercase tracking-tighter leading-none md:text-7xl font-display">
                   Cómo trabajamos
                 </h2>
                 <p className="max-w-2xl text-lg leading-relaxed text-zinc-300 font-light">
@@ -639,7 +639,7 @@ export default function App() {
                 
                 <div className="space-y-4">
                   <span className="text-zinc-500 uppercase text-[0.4em] font-bold block">Información Detallada</span>
-                  <h2 className="title-glow headline-metal text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
+                  <h2 className="title-glow headline-metal slant-metal text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none font-display">
                     {selectedService.title}
                   </h2>
                 </div>

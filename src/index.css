@@ -61,6 +61,12 @@
   @apply text-zinc-500;
 }
 
+.slant-metal {
+  display: inline-block;
+  transform: skewX(-8deg);
+  transform-origin: center;
+}
+
 .silver-panel {
   position: relative;
   isolation: isolate;
