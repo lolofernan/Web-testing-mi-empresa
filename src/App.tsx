@@ -289,7 +289,7 @@ export default function App() {
           >
             <h2 className="text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none italic font-display">
               Por qué elegirnos <br />
-              <span className="text-gray-700">excelencia digital</span>
+              <span className="metal-text">excelencia digital</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {[
@@ -302,10 +302,10 @@ export default function App() {
                   whileHover={{ y: -10 }}
                   className="silver-panel flex flex-col items-center gap-4 p-8 rounded-3xl transition-colors border border-zinc-800"
                 >
-                  <div className="text-white p-4 bg-white/5 rounded-full">{item.icon}</div>
+                  <div className="text-zinc-100 p-4 bg-zinc-100/8 rounded-full border border-zinc-700/40">{item.icon}</div>
                   <div>
                     <h4 className="font-bold text-xl uppercase tracking-tighter mb-2">{item.title}</h4>
-                    <p className="text-gray-500 text-sm leading-relaxed font-light">{item.desc}</p>
+                    <p className="text-zinc-300/80 text-sm leading-relaxed font-light">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
