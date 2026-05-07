@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Monitor, Code, Star, ChevronRight, Menu, X, Award, Zap, MessageCircle, Instagram, Gift } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import brandLogo from './assets/brand-logo.png';
 import profilePhoto from './assets/yojuajau.jpg';
 
 export default function App() {
@@ -54,7 +55,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-gray-100 font-sans selection:bg-white selection:text-black">
+    <div className="site-shell min-h-screen bg-black text-zinc-100 font-sans selection:bg-white selection:text-black">
       <AnimatePresence mode="wait">
         {!selectedService && !showProcessPage ? (
           <motion.div
@@ -65,17 +66,19 @@ export default function App() {
             transition={{ duration: 0.5 }}
           >
             {/* Navegación */}
-            <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-gray-800 py-4' : 'bg-transparent py-6'}`}>
+            <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/85 backdrop-blur-md border-b border-zinc-700/40 py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <motion.div 
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-3"
           >
-            <div className="w-10 h-10 bg-white flex items-center justify-center rounded-sm">
-              <span className="text-black font-black text-xl italic">WT</span>
-            </div>
-            <span className="text-xl font-bold tracking-tighter uppercase font-display">Web Testing</span>
+            <img
+              src={brandLogo}
+              alt="Logo de Web Testing"
+              className="logo-glow h-11 w-11 rounded-full object-cover"
+            />
+            <span className="metal-text text-xl font-bold tracking-tighter uppercase font-display">Web Testing</span>
           </motion.div>
           
           <div className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
@@ -125,10 +128,10 @@ export default function App() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden border-b border-gray-900">
-        <div className="absolute inset-0 z-0 opacity-30">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-800 via-black to-black"></div>
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+      <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden border-b border-zinc-800/70">
+        <div className="absolute inset-0 z-0 opacity-50">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(232,236,241,0.22),transparent_28%),radial-gradient(circle_at_20%_80%,rgba(147,151,159,0.15),transparent_24%),linear-gradient(180deg,#070707_0%,#111214_58%,#050505_100%)]"></div>
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-15"></div>
         </div>
         
         <div className="relative z-10 text-center px-6 max-w-5xl">
@@ -137,16 +140,21 @@ export default function App() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
+            <img
+              src={brandLogo}
+              alt="Logo de Web Testing"
+              className="logo-glow mx-auto mb-8 h-24 w-24 rounded-full object-cover md:h-28 md:w-28"
+            />
             <span className="inline-block px-4 py-1 border border-gray-800 text-[10px] tracking-[0.4em] uppercase mb-8 rounded-full bg-white/5 backdrop-blur-sm text-gray-400 font-medium">
               Diseño web premium para marcas que quieren vender más
             </span>
             <h1 className="text-6xl md:text-[120px] font-black mb-8 leading-[0.9] tracking-tighter font-display uppercase">
               DISEÑO QUE <br/>
-              <span className="text-gradient">
+              <span className="metal-text">
                 TRASCIENDE
               </span>
             </h1>
-            <p className="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+            <p className="text-zinc-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light">
               Diseñamos experiencias digitales rápidas, elegantes y pensadas para convertir visitas en consultas reales.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -154,7 +162,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-sweep border border-gray-800 text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs"
+                className="btn-sweep border border-zinc-600 text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs"
               >
                 Nuestros Servicios
               </motion.button>
@@ -162,7 +170,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('presupuesto')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-sweep border border-gray-800 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs"
+                className="btn-sweep border border-zinc-600 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs"
               >
                 Presupuesto
               </motion.button>
@@ -170,7 +178,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('quien-soy')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-sweep border border-gray-800 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
+                className="btn-sweep border border-zinc-600 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
               >
                 Quiénes están detrás <ChevronRight className="w-3 h-3" />
               </motion.button>
@@ -178,7 +186,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowProcessPage(true)}
-                className="btn-sweep border border-gray-800 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
+                className="btn-sweep border border-zinc-600 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2"
               >
                 Cómo trabajamos <ChevronRight className="w-3 h-3" />
               </motion.button>
@@ -197,7 +205,7 @@ export default function App() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-black py-24 relative z-10 border-b border-gray-900">
+      <section className="bg-black py-24 relative z-10 border-b border-zinc-800/60">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             variants={containerVariants}
@@ -208,7 +216,7 @@ export default function App() {
           >
             {stats.map((stat, i) => (
               <motion.div key={i} variants={itemVariants} className="space-y-2">
-                <p className="text-white text-5xl md:text-6xl font-black tracking-tighter font-display">{stat.value}</p>
+                <p className="metal-text text-5xl md:text-6xl font-black tracking-tighter font-display">{stat.value}</p>
                 <p className="text-gray-500 uppercase text-[10px] tracking-[0.3em] font-bold">{stat.label}</p>
               </motion.div>
             ))}
@@ -217,7 +225,7 @@ export default function App() {
       </section>
 
       {/* Servicios */}
-      <section id="servicios" className="py-32 bg-zinc-950">
+      <section id="servicios" className="py-32 bg-zinc-950/90">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
             <div className="max-w-xl">
@@ -236,7 +244,7 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="group p-10 border border-gray-900 rounded-3xl hover:border-gray-700 transition-all duration-500 hover:bg-zinc-900/50 relative overflow-hidden"
+                className="silver-panel group p-10 border border-zinc-800 rounded-3xl hover:border-zinc-500 transition-all duration-500 hover:bg-zinc-900/80 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-8 text-gray-900 font-display font-black text-6xl group-hover:text-gray-800 transition-colors">
                   0{i + 1}
@@ -262,7 +270,7 @@ export default function App() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedService({ title: "Nuestros Servicios", desc: "Información detallada sobre todos nuestros planes y soluciones digitales.", icon: null })}
-              className="btn-sweep border border-gray-800 text-white px-16 py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] flex items-center gap-4 transition-all"
+                className="btn-sweep border border-zinc-600 text-white px-16 py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] flex items-center gap-4 transition-all"
             >
               Saber más <ChevronRight className="w-5 h-5" />
             </motion.button>
@@ -292,7 +300,7 @@ export default function App() {
                 <motion.div 
                   key={i} 
                   whileHover={{ y: -10 }}
-                  className="flex flex-col items-center gap-4 p-8 bg-zinc-950 rounded-3xl transition-colors border border-gray-900"
+                  className="silver-panel flex flex-col items-center gap-4 p-8 rounded-3xl transition-colors border border-zinc-800"
                 >
                   <div className="text-white p-4 bg-white/5 rounded-full">{item.icon}</div>
                   <div>
@@ -362,7 +370,7 @@ export default function App() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="bg-black border border-gray-900 p-10 rounded-[2.5rem] flex flex-col justify-between group hover:border-gray-700 transition-colors"
+              className="silver-panel border border-zinc-800 p-10 rounded-[2.5rem] flex flex-col justify-between group hover:border-zinc-500 transition-colors"
               >
                 <div className="space-y-8">
                   <h3 className="text-zinc-500 uppercase text-[10px] tracking-[0.3em] font-bold">{plan.title}</h3>
@@ -387,7 +395,7 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="bg-zinc-900/50 border-2 border-dashed border-gray-800 p-10 rounded-[2.5rem] flex flex-col justify-center text-center space-y-6"
+              className="silver-panel border-2 border-dashed border-zinc-700 p-10 rounded-[2.5rem] flex flex-col justify-center text-center space-y-6"
             >
               <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                 <Gift className="text-white" size={32} />
@@ -412,7 +420,7 @@ export default function App() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-4 bg-white text-black px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm shadow-2xl shadow-white/10 hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center justify-center gap-4 bg-zinc-200 text-black px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm shadow-2xl shadow-zinc-200/10 hover:bg-white transition-colors"
             >
               <MessageCircle fill="currentColor" className="w-5 h-5 text-black" /> Hablar con Lorenzo
             </motion.a>
@@ -427,7 +435,7 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="w-full md:w-1/3 aspect-square bg-zinc-950 rounded-full border border-gray-800 overflow-hidden group shadow-2xl shadow-black/40"
+            className="w-full md:w-1/3 aspect-square bg-zinc-950 rounded-full border border-zinc-700 overflow-hidden group shadow-2xl shadow-zinc-900/40"
           >
             <img
               src={profilePhoto}
@@ -463,11 +471,13 @@ export default function App() {
       {/* Footer */}
       <footer className="py-20 border-t border-gray-900 bg-black">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
-          <div className="flex items-center gap-3 grayscale opacity-30 hover:opacity-100 transition-opacity cursor-pointer">
-            <div className="w-8 h-8 bg-white flex items-center justify-center rounded-sm">
-              <span className="text-black font-black text-sm italic">WT</span>
-            </div>
-            <span className="text-xl font-bold tracking-tighter uppercase font-display">Web Testing</span>
+          <div className="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
+            <img
+              src={brandLogo}
+              alt="Logo de Web Testing"
+              className="logo-glow h-10 w-10 rounded-full object-cover"
+            />
+            <span className="metal-text text-xl font-bold tracking-tighter uppercase font-display">Web Testing</span>
           </div>
           <p className="text-gray-700 text-[10px] tracking-[0.35em] uppercase font-bold text-center">
             © 2026 WEB TESTING — PÁGINA 100% HECHA CON WEB TESTING Y NUESTROS SERVICIOS
@@ -643,7 +653,7 @@ export default function App() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="inline-flex items-center gap-4 btn-sweep border border-gray-800 text-white px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm"
+                    className="inline-flex items-center gap-4 btn-sweep border border-zinc-600 text-white px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] text-sm"
                     >
                       <MessageCircle fill="currentColor" className="w-5 h-5" /> Consultar por WhatsApp
                     </motion.a>
