@@ -116,14 +116,10 @@
   pointer-events: none;
 }
 
-/* Barrido de luz (shimmer) */
+/* Barrido de luz (shimmer) continuo sin pausa */
 @keyframes shimmer-sweep {
-  0%      { left: -80px; opacity: 1; }
-  35%     { left: 110%;  opacity: 1; }
-  35.001% { left: -80px; opacity: 0; }
-  35.1%   { opacity: 0; }
-  36%     { opacity: 1; }
-  100%    { left: -80px; opacity: 1; }
+  0%   { left: -80px; }
+  100% { left: 110%; }
 }
 
 .card-metallic::after {
@@ -142,7 +138,7 @@
     transparent
   );
   transform: rotate(18deg);
-  animation: shimmer-sweep 7s ease-in-out infinite;
+  animation: shimmer-sweep 2.4s linear infinite;
   pointer-events: none;
 }
 

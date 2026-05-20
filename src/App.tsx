@@ -268,9 +268,9 @@ export default function App() {
                   {services.map((s, i) => (
                     <div key={i} className="tilt-wrap" onMouseMove={handleTilt} onMouseLeave={resetTilt}>
                     <motion.div
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.7, delay: i * 0.2, repeat: Infinity, repeatType: "loop", repeatDelay: 0 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: i * 0.1 }}
                       className="group p-10 border border-gray-900 rounded-3xl hover:border-gray-700 transition-all duration-500 hover:bg-zinc-900/50 relative overflow-hidden card-metallic"
                     >
                       <div className="absolute top-0 right-0 p-8 text-[#111111] font-display font-black text-6xl group-hover:text-[#1e1e1e] transition-colors">
@@ -357,9 +357,9 @@ export default function App() {
                   ].map((plan, i) => (
                     <div key={i} className="tilt-wrap" onMouseMove={handleTilt} onMouseLeave={resetTilt}>
                     <motion.div
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.7, delay: i * 0.2, repeat: Infinity, repeatType: "loop", repeatDelay: 0 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: i * 0.1 }}
                       whileHover={{ y: -5 }}
                       className={`bg-zinc-950 border border-gray-900 p-10 rounded-[2.5rem] flex flex-col justify-between group hover:border-gray-700 transition-colors card-metallic${i === 1 ? ' price-card-glow' : ''}`}
                     >
