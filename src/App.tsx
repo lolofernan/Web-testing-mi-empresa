@@ -79,7 +79,7 @@ export default function App() {
             animate={{ x: 0, opacity: 1 }}
             className="flex items-center gap-2"
           >
-            <div className="w-10 h-10 logo-box-metallic flex items-center justify-center rounded-sm">
+            <div className="w-10 h-10 logo-box-metallic flex items-center justify-center rounded-sm glow-rgb">
               <span className="text-black font-black text-xl italic">WT</span>
             </div>
             <span className="text-xl font-bold tracking-tighter uppercase font-display">Web Testing</span>
@@ -161,7 +161,7 @@ export default function App() {
             </span>
             <h1 className="text-6xl md:text-[120px] font-black mb-8 leading-[0.9] tracking-tighter font-display uppercase">
               DISEÑO QUE <br/>
-              <span className="text-chrome">
+              <span className="text-rgb">
                 TRASCIENDE
               </span>
             </h1>
@@ -305,7 +305,7 @@ export default function App() {
                   whileHover={{ y: -10 }}
                   className="flex flex-col items-center gap-4 p-8 bg-zinc-950 rounded-3xl transition-colors border border-gray-900 card-metallic"
                 >
-                  <div className="text-white p-4 bg-white/5 rounded-full">{item.icon}</div>
+                  <div className="text-white p-4 bg-white/5 rounded-full glow-rgb">{item.icon}</div>
                   <div>
                     <h4 className="font-bold text-xl uppercase tracking-tighter mb-2">{item.title}</h4>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">{item.desc}</p>
