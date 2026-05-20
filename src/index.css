@@ -12,10 +12,261 @@
   }
 }
 
+/* ── UTILIDADES ORIGINALES ── */
+
 .text-gradient {
   @apply text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500;
 }
 
 @utility btn-sweep {
   @apply transition-all duration-700 bg-[linear-gradient(to_right,black_0%,black_35%,white_65%,white_100%)] bg-[length:300%_100%] bg-left hover:bg-right hover:text-black hover:border-white;
+}
+
+/* ══════════════════════════════════════════
+   TEXTO METÁLICO / CHROME
+══════════════════════════════════════════ */
+
+@keyframes chrome-shine {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 200% center; }
+}
+
+.text-chrome {
+  background: linear-gradient(
+    105deg,
+    #b0b0b0  0%,
+    #f5f5f5 18%,
+    #ffffff 30%,
+    #d0d0d0 42%,
+    #ffffff 55%,
+    #f5f5f5 68%,
+    #c0c0c0 80%,
+    #ffffff 92%,
+    #b0b0b0 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: chrome-shine 5s linear infinite;
+}
+
+/* ── LOGO BOX METÁLICO ── */
+
+.logo-box-metallic {
+  background: linear-gradient(
+    135deg,
+    #ffffff  0%,
+    #d8d8d8 25%,
+    #ffffff 45%,
+    #a8a8a8 65%,
+    #ffffff 85%,
+    #d8d8d8 100%
+  );
+  background-size: 200% auto;
+  animation: chrome-shine 3s linear infinite;
+}
+
+/* ══════════════════════════════════════════
+   TARJETAS METÁLICAS + SHIMMER
+══════════════════════════════════════════ */
+
+.card-metallic {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Capa de brillo metálico estático */
+.card-metallic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.05) 0%,
+    transparent              45%,
+    rgba(255,255,255,0.02) 100%
+  );
+  pointer-events: none;
+}
+
+/* Barrido de luz (shimmer) */
+@keyframes shimmer-sweep {
+  0%      { left: -80px; opacity: 1; }
+  35%     { left: 110%;  opacity: 1; }
+  35.001% { left: -80px; opacity: 0; }
+  35.1%   { opacity: 0; }
+  36%     { opacity: 1; }
+  100%    { left: -80px; opacity: 1; }
+}
+
+.card-metallic::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -80px;
+  width: 70px;
+  height: 280%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.12),
+    rgba(255,255,255,0.04),
+    transparent
+  );
+  transform: rotate(18deg);
+  animation: shimmer-sweep 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── GLOW EN TARJETA DE PRECIO ── */
+
+.price-card-glow {
+  box-shadow:
+    0 0  0  1px rgba(255, 255, 255, 0.09),
+    0 0 40px    rgba(255, 255, 255, 0.05),
+    0 0 80px    rgba(255, 255, 255, 0.02);
+}
+
+/* ══════════════════════════════════════════
+   EFECTO AURORA (HERO)
+══════════════════════════════════════════ */
+
+.aurora-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  animation: aurora-pulse 14s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-pulse {
+  0% {
+    background:
+      radial-gradient(ellipse 80% 55% at 18% 22%, rgba(200,200,200,0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 55% 70% at 82% 78%, rgba(230,230,230,0.04) 0%, transparent 65%);
+  }
+  33% {
+    background:
+      radial-gradient(ellipse 65% 60% at 72% 28%, rgba(210,210,210,0.09) 0%, transparent 65%),
+      radial-gradient(ellipse 75% 50% at 22% 72%, rgba(190,190,190,0.05) 0%, transparent 65%);
+  }
+  66% {
+    background:
+      radial-gradient(ellipse 90% 45% at 48% 82%, rgba(180,180,180,0.06) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 65% at 12% 28%, rgba(220,220,220,0.07) 0%, transparent 65%);
+  }
+  100% {
+    background:
+      radial-gradient(ellipse 60% 80% at 38% 58%, rgba(200,200,200,0.05) 0%, transparent 65%),
+      radial-gradient(ellipse 75% 40% at 75% 15%, rgba(240,240,240,0.08) 0%, transparent 65%);
+  }
+}
+
+/* ══════════════════════════════════════════
+   LÍNEAS DE CUADRÍCULA (HERO)
+══════════════════════════════════════════ */
+
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════
+   LÍNEA DE ESCANEO
+══════════════════════════════════════════ */
+
+@keyframes scan-line {
+  0%   { top: 0%;   }
+  100% { top: 100%; }
+}
+
+.scan-effect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.07),
+    transparent
+  );
+  pointer-events: none;
+  animation: scan-line 12s linear infinite;
+}
+
+/* ══════════════════════════════════════════
+   PARTÍCULAS FLOTANTES
+══════════════════════════════════════════ */
+
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@keyframes float-particle {
+  0%   { transform: translateY(0)      translateX(0);    opacity: 0;    }
+  6%   { opacity: 0.55; }
+  90%  { opacity: 0.15; }
+  100% { transform: translateY(-105vh) translateX(18px); opacity: 0; }
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  bottom: -4px;
+  animation: float-particle linear infinite;
+}
+
+/* ══════════════════════════════════════════
+   LÍNEA DIVISORA ANIMADA
+══════════════════════════════════════════ */
+
+@keyframes line-flow {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.gradient-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent             0%,
+    rgba(255,255,255,0.06) 20%,
+    rgba(255,255,255,0.40) 50%,
+    rgba(255,255,255,0.06) 80%,
+    transparent            100%
+  );
+  background-size: 200% auto;
+  animation: line-flow 4s linear infinite;
+}
+
+/* ══════════════════════════════════════════
+   GLOW EN NÚMEROS DE ESTADÍSTICAS
+══════════════════════════════════════════ */
+
+.stat-glow {
+  text-shadow:
+    0 0 28px rgba(255, 255, 255, 0.28),
+    0 0 60px rgba(255, 255, 255, 0.10);
+}
+
+/* ══════════════════════════════════════════
+   GLOW EN BORDE DEL NAV (scroll)
+══════════════════════════════════════════ */
+
+.nav-glow {
+  box-shadow: 0 1px 24px rgba(255, 255, 255, 0.06);
 }

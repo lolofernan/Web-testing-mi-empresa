@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Monitor, Code, Star, Send, ChevronRight, Menu, X, Award, Shield, Zap, MessageCircle, Instagram, User, Gift } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -6,6 +6,15 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [selectedService, setSelectedService] = useState<null | typeof services[0]>(null);
+
+  const particles = useMemo(() =>
+    Array.from({ length: 18 }, (_, i) => ({
+      id: i,
+      left: `${(i * 5.7 + 3) % 100}%`,
+      delay: `-${(i * 1.9) % 14}s`,
+      duration: `${13 + (i * 2.3) % 11}s`,
+    })), []
+  );
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -63,14 +72,14 @@ export default function App() {
             transition={{ duration: 0.5 }}
           >
             {/* Navegación */}
-            <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-gray-800 py-4' : 'bg-transparent py-6'}`}>
+            <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-gray-800 py-4 nav-glow' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <motion.div 
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             className="flex items-center gap-2"
           >
-            <div className="w-10 h-10 bg-white flex items-center justify-center rounded-sm">
+            <div className="w-10 h-10 logo-box-metallic flex items-center justify-center rounded-sm">
               <span className="text-black font-black text-xl italic">WT</span>
             </div>
             <span className="text-xl font-bold tracking-tighter uppercase font-display">Web Testing</span>
@@ -128,6 +137,18 @@ export default function App() {
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-800 via-black to-black"></div>
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
         </div>
+        <div className="grid-lines z-[1]" />
+        <div className="aurora-overlay z-[1]" />
+        <div className="scan-effect z-[1]" />
+        <div className="particles z-[1]">
+          {particles.map(p => (
+            <div
+              key={p.id}
+              className="particle"
+              style={{ left: p.left, animationDelay: p.delay, animationDuration: p.duration }}
+            />
+          ))}
+        </div>
         
         <div className="relative z-10 text-center px-6 max-w-5xl">
           <motion.div
@@ -140,7 +161,7 @@ export default function App() {
             </span>
             <h1 className="text-6xl md:text-[120px] font-black mb-8 leading-[0.9] tracking-tighter font-display uppercase">
               DISEÑO QUE <br/>
-              <span className="text-gradient">
+              <span className="text-chrome">
                 TRASCIENDE
               </span>
             </h1>
@@ -198,7 +219,7 @@ export default function App() {
           >
             {stats.map((stat, i) => (
               <motion.div key={i} variants={itemVariants} className="space-y-2">
-                <p className="text-white text-5xl md:text-6xl font-black tracking-tighter font-display">{stat.value}</p>
+                <p className="text-white text-5xl md:text-6xl font-black tracking-tighter font-display stat-glow">{stat.value}</p>
                 <p className="text-gray-500 uppercase text-[10px] tracking-[0.3em] font-bold">{stat.label}</p>
               </motion.div>
             ))}
@@ -215,7 +236,7 @@ export default function App() {
               <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter italic font-display">Nuestros Servicios</h2>
               <p className="text-gray-500 leading-relaxed">Soluciones integrales diseñadas para dominar el mercado digital actual con elegancia y rendimiento.</p>
             </div>
-            <div className="h-px flex-1 bg-gray-900 mb-6 hidden md:block"></div>
+            <div className="flex-1 gradient-line mb-6 hidden md:block"></div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -226,7 +247,7 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="group p-10 border border-gray-900 rounded-3xl hover:border-gray-700 transition-all duration-500 hover:bg-zinc-900/50 relative overflow-hidden"
+                className="group p-10 border border-gray-900 rounded-3xl hover:border-gray-700 transition-all duration-500 hover:bg-zinc-900/50 relative overflow-hidden card-metallic"
               >
                 <div className="absolute top-0 right-0 p-8 text-gray-900 font-display font-black text-6xl group-hover:text-gray-800 transition-colors">
                   0{i + 1}
@@ -282,7 +303,7 @@ export default function App() {
                 <motion.div 
                   key={i} 
                   whileHover={{ y: -10 }}
-                  className="flex flex-col items-center gap-4 p-8 bg-zinc-950 rounded-3xl transition-colors border border-gray-900"
+                  className="flex flex-col items-center gap-4 p-8 bg-zinc-950 rounded-3xl transition-colors border border-gray-900 card-metallic"
                 >
                   <div className="text-white p-4 bg-white/5 rounded-full">{item.icon}</div>
                   <div>
@@ -352,7 +373,7 @@ export default function App() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="bg-black border border-gray-900 p-10 rounded-[2.5rem] flex flex-col justify-between group hover:border-gray-700 transition-colors"
+                className={`bg-black border border-gray-900 p-10 rounded-[2.5rem] flex flex-col justify-between group hover:border-gray-700 transition-colors card-metallic${i === 1 ? ' price-card-glow' : ''}`}
               >
                 <div className="space-y-8">
                   <h3 className="text-zinc-500 uppercase text-[10px] tracking-[0.3em] font-bold">{plan.title}</h3>
