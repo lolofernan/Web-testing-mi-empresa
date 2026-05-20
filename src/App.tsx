@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Monitor, Code, Zap, ChevronRight, Menu, X, MessageCircle, Instagram, Gift } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -7,6 +7,7 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [selectedService, setSelectedService] = useState<null | typeof services[0]>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [cursor, setCursor] = useState({ x: -200, y: -200 });
 
   const particles = useMemo(() =>
     Array.from({ length: 18 }, (_, i) => ({
@@ -19,8 +20,33 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleMouse = (e: MouseEvent) => setCursor({ x: e.clientX, y: e.clientY });
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouse);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouse);
+    };
+  }, []);
+
+  const handleHeroMouse = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`);
+  }, []);
+
+  const handleTilt = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+    const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+    el.style.setProperty('--rx', `${-dy * 9}deg`);
+    el.style.setProperty('--ry', `${dx * 9}deg`);
+  }, []);
+
+  const resetTilt = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.setProperty('--rx', '0deg');
+    e.currentTarget.style.setProperty('--ry', '0deg');
   }, []);
 
   const services = [
@@ -73,6 +99,14 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-black text-gray-100 font-sans selection:bg-white selection:text-black">
+      <div
+        className="custom-cursor-ring"
+        style={{ transform: `translate(${cursor.x - 13}px, ${cursor.y - 13}px)` }}
+      />
+      <div
+        className="custom-cursor-dot"
+        style={{ transform: `translate(${cursor.x - 2}px, ${cursor.y - 2}px)` }}
+      />
       <AnimatePresence mode="wait">
         {!selectedService ? (
           <motion.div
@@ -143,11 +177,12 @@ export default function App() {
             </AnimatePresence>
 
             {/* Hero Section */}
-            <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden border-b border-gray-900">
+            <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden border-b border-gray-900" onMouseMove={handleHeroMouse}>
               <div className="absolute inset-0 z-0 opacity-30">
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-800 via-black to-black"></div>
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
               </div>
+              <div className="hero-spotlight" />
               <div className="grid-lines z-[1]" />
               <div className="aurora-overlay z-[1]" />
               <div className="scan-effect z-[1]" />
@@ -167,7 +202,7 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8 }}
                 >
-                  <span className="inline-block px-4 py-1 border border-gray-800 text-[10px] tracking-[0.4em] uppercase mb-8 rounded-full bg-white/5 backdrop-blur-sm text-gray-400 font-medium">
+                  <span className="hero-badge inline-block px-4 py-1 text-[10px] tracking-[0.4em] uppercase mb-8 rounded-full text-gray-400 font-medium">
                     Innovación digital sin límites
                   </span>
                   <h1 className="text-6xl md:text-[120px] font-black mb-8 leading-[0.9] tracking-tighter font-display uppercase">
@@ -231,8 +266,8 @@ export default function App() {
 
                 <div className="grid md:grid-cols-3 gap-8">
                   {services.map((s, i) => (
+                    <div key={i} className="tilt-wrap" onMouseMove={handleTilt} onMouseLeave={resetTilt}>
                     <motion.div
-                      key={i}
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.1 }}
@@ -250,6 +285,7 @@ export default function App() {
                         {s.desc}
                       </p>
                     </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -320,8 +356,8 @@ export default function App() {
                       features: ["Seguimiento local exclusivo", "Optimización de perfil", "Aumento de visibilidad", "Configuración completa"]
                     }
                   ].map((plan, i) => (
+                    <div key={i} className="tilt-wrap" onMouseMove={handleTilt} onMouseLeave={resetTilt}>
                     <motion.div
-                      key={i}
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -345,6 +381,7 @@ export default function App() {
                         </ul>
                       </div>
                     </motion.div>
+                    </div>
                   ))}
 
                   {/* Promo Card */}

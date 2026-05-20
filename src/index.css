@@ -368,3 +368,104 @@
 .border-rgb {
   animation: rgb-border-pulse 5s linear infinite;
 }
+
+/* ══════════════════════════════════════════
+   CURSOR PERSONALIZADO
+══════════════════════════════════════════ */
+
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid rgba(255, 255, 255, 0.72);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+  transition: transform 0.10s ease-out;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(2px);
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+}
+
+/* ══════════════════════════════════════════
+   SPOTLIGHT HERO (sigue el mouse)
+══════════════════════════════════════════ */
+
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 640px at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.055) 0%,
+    rgba(255, 255, 255, 0.018) 35%,
+    transparent 70%
+  );
+  z-index: 2;
+}
+
+/* ══════════════════════════════════════════
+   3D TILT WRAPPER
+══════════════════════════════════════════ */
+
+.tilt-wrap {
+  perspective: 1100px;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.38s cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 1.5rem;
+}
+
+/* Sombra de profundidad al inclinar */
+.tilt-wrap:hover .card-metallic {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 22px 55px rgba(0,0,0,0.65),
+    0 6px 18px rgba(0,0,0,0.45);
+}
+
+/* ══════════════════════════════════════════
+   MEJORAS VISUALES 3D / PROFUNDIDAD
+══════════════════════════════════════════ */
+
+/* Inset glow en cards */
+.card-metallic {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    inset 0 -1px 0 rgba(0,0,0,0.4);
+  transition: box-shadow 0.35s ease;
+}
+
+/* Texto hero con sombra de profundidad */
+.hero-title-depth {
+  text-shadow:
+    0 2px 8px rgba(0,0,0,0.6),
+    0 8px 24px rgba(0,0,0,0.3);
+}
+
+/* Glassmorphism para el badge hero */
+.hero-badge {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+}
