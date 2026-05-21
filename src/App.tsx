@@ -326,81 +326,122 @@ export default function App() {
               </div>
 
               <div className="max-w-7xl mx-auto px-6">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {[
-                    {
-                      title: "Desarrollo Web",
-                      price: "35$ - 50$",
-                      features: ["Diseño de alto impacto", "Adaptable a móviles", "Entrega ultra rápida"]
-                    },
-                    {
-                      title: "Mantenimiento",
-                      price: "44$",
-                      period: "/ mes",
-                      features: ["Incluye Dominio .com", "5 Modificaciones mensuales", "Soporte prioritario", "Primer mes 100% BONIFICADO*"]
-                    },
-                    {
-                      title: "Modificación Grande",
-                      price: "55$ - 497$",
-                      features: ["Rediseño de secciones", "Nuevas funcionalidades", "Escalabilidad", "Presupuesto exacto previo"]
-                    },
-                    {
-                      title: "Dominio .app",
-                      price: "10$",
-                      features: ["Un año de suscripción", "Ideal para webapps", "Configuración DNS", "Privacidad incluida"]
-                    },
-                    {
-                      title: "Google Maps",
-                      price: "30$",
-                      features: ["Seguimiento local exclusivo", "Optimización de perfil", "Aumento de visibilidad", "Configuración completa"]
-                    }
-                  ].map((plan, i) => (
-                    <div key={i} className="tilt-wrap" onMouseMove={handleTilt} onMouseLeave={resetTilt}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: i * 0.1 }}
-                      whileHover={{ y: -5 }}
-                      className={`bg-zinc-950 border border-gray-900 p-10 rounded-[2.5rem] flex flex-col justify-between group hover:border-gray-700 transition-colors card-metallic${i === 1 ? ' price-card-glow' : ''}`}
-                    >
-                      <div className="space-y-8">
-                        <h3 className="text-zinc-500 uppercase text-[10px] tracking-[0.3em] font-bold">{plan.title}</h3>
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-5xl font-black italic font-display tracking-tighter text-white">{plan.price}</span>
-                          {plan.period && <span className="text-zinc-600 font-bold uppercase text-[10px] tracking-widest">{plan.period}</span>}
-                        </div>
-                        <ul className="space-y-4 pt-4 border-t border-gray-900">
-                          {plan.features.map((f, idx) => (
-                            <li key={idx} className="flex items-center gap-3 text-sm text-gray-500 group-hover:text-gray-400 transition-colors font-light italic">
-                              <div className="w-1.5 h-1.5 bg-[#1a1a1a] rounded-full group-hover:bg-white transition-colors" />
-                              {f}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </motion.div>
-                    </div>
-                  ))}
-
-                  {/* Promo Card */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="bg-zinc-900/50 border-2 border-dashed border-gray-800 p-10 rounded-[2.5rem] flex flex-col justify-center text-center space-y-6"
+                {/* Phone Frame */}
+                <motion.div
+                  initial={{ opacity: 0, y: 70, scale: 0.93 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1] }}
+                  className="relative max-w-sm mx-auto"
+                >
+                  <div
+                    className="relative border-[3px] border-gray-700 rounded-[3.5rem] overflow-hidden bg-zinc-950"
+                    style={{
+                      boxShadow:
+                        '0 0 0 1px rgba(255,255,255,0.05), inset 0 1px 0 rgba(255,255,255,0.10), 0 70px 140px rgba(0,0,0,0.95)',
+                    }}
                   >
-                    <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto glow-rgb">
-                      <Gift className="text-white" size={32} />
+                    {/* Notch pill */}
+                    <div className="flex justify-center pt-5 pb-3">
+                      <div className="w-28 h-[6px] bg-gray-700 rounded-full" />
                     </div>
-                    <h3 className="text-2xl font-black uppercase tracking-tighter italic font-display text-white">BONO DE BIENVENIDA</h3>
-                    <p className="text-gray-500 text-sm font-light leading-relaxed italic">
-                      *El primer mes las modificaciones y el mantenimiento <span className="text-white font-medium">NO TIENEN COSTO</span>. Solo abonas el dominio.
+
+                    {/* Side buttons (decorative) */}
+                    <div className="absolute left-[-3px] top-28 w-[3px] h-10 bg-gray-600 rounded-l-sm" />
+                    <div className="absolute left-[-3px] top-44 w-[3px] h-8 bg-gray-600 rounded-l-sm" />
+                    <div className="absolute right-[-3px] top-36 w-[3px] h-14 bg-gray-600 rounded-r-sm" />
+
+                    {/* Screen label */}
+                    <p className="text-center text-[9px] font-bold uppercase tracking-[0.3em] text-zinc-600 pb-3 px-6">
+                      Deslizá para ver precios →
                     </p>
-                    <p className="text-xs text-zinc-600 font-bold uppercase tracking-widest leading-relaxed">
-                      (Las modificaciones pequeñas nunca cuentan como cupo mensual)
-                    </p>
-                  </motion.div>
-                </div>
+
+                    {/* Horizontal scrollable cards */}
+                    <div
+                      className="overflow-x-auto px-5 pb-5"
+                      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    >
+                      <div className="flex flex-row gap-4" style={{ width: 'max-content' }}>
+                        {[
+                          {
+                            title: "Desarrollo Web",
+                            price: "35$–50$",
+                            features: ["Diseño de alto impacto", "Adaptable a móviles", "Entrega ultra rápida"]
+                          },
+                          {
+                            title: "Mantenimiento",
+                            price: "44$",
+                            period: "/ mes",
+                            features: ["Dominio .com incluido", "5 modificaciones/mes", "Soporte prioritario", "Primer mes BONIFICADO*"]
+                          },
+                          {
+                            title: "Mod. Grande",
+                            price: "55$–497$",
+                            features: ["Rediseño de secciones", "Nuevas funcionalidades", "Escalabilidad", "Presupuesto exacto previo"]
+                          },
+                          {
+                            title: "Dominio .app",
+                            price: "10$",
+                            features: ["Un año de suscripción", "Ideal para webapps", "Configuración DNS", "Privacidad incluida"]
+                          },
+                          {
+                            title: "Google Maps",
+                            price: "30$",
+                            features: ["Seguimiento local", "Optimización de perfil", "Aumento de visibilidad", "Configuración completa"]
+                          },
+                          {
+                            title: "Bono Bienvenida",
+                            price: "GRATIS",
+                            isPromo: true,
+                            features: ["Primer mes sin costo", "Solo abonas dominio", "Modificaciones sin límite", "(pequeñas no cuentan)"]
+                          }
+                        ].map((plan: any, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, x: 40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.45, delay: 0.2 + i * 0.1 }}
+                            whileHover={{ y: -4 }}
+                            className={`flex-shrink-0 w-40 flex flex-col gap-4 p-5 rounded-[1.75rem] border group transition-colors card-metallic ${
+                              plan.isPromo
+                                ? 'border-dashed border-2 border-gray-700 bg-zinc-900/60'
+                                : `border border-gray-800 bg-zinc-900 hover:border-gray-600${i === 1 ? ' price-card-glow' : ''}`
+                            }`}
+                          >
+                            <h3 className="text-zinc-500 uppercase text-[8px] tracking-[0.2em] font-bold leading-tight">{plan.title}</h3>
+                            <div>
+                              <span className={`font-black italic font-display tracking-tighter ${plan.isPromo ? 'text-xl text-white' : 'text-2xl text-white'}`}>
+                                {plan.price}
+                              </span>
+                              {plan.period && (
+                                <span className="block text-zinc-600 font-bold uppercase text-[8px] tracking-widest mt-0.5">{plan.period}</span>
+                              )}
+                            </div>
+                            <ul className="space-y-2 pt-3 border-t border-gray-800 flex-1">
+                              {plan.features.map((f: string, idx: number) => (
+                                <li key={idx} className="flex items-start gap-1.5 text-[10px] text-gray-500 group-hover:text-gray-400 transition-colors font-light italic leading-snug">
+                                  <div className="w-1 h-1 mt-1 bg-gray-700 rounded-full flex-shrink-0 group-hover:bg-white transition-colors" />
+                                  {f}
+                                </li>
+                              ))}
+                            </ul>
+                            {plan.isPromo && (
+                              <div className="flex justify-center pt-1">
+                                <Gift className="text-gray-500 glow-rgb" size={20} />
+                              </div>
+                            )}
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Home indicator */}
+                    <div className="flex justify-center py-4">
+                      <div className="w-28 h-[5px] bg-gray-700 rounded-full" />
+                    </div>
+                  </div>
+                </motion.div>
 
                 <div className="mt-20 flex flex-col items-center gap-8 text-center pt-20 border-t border-gray-900/50">
                   <p className="text-gray-400 text-xl font-light italic max-w-3xl leading-relaxed">

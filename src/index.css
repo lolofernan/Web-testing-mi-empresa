@@ -73,7 +73,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: chrome-shine 5s linear infinite;
+  animation: chrome-shine 10s linear infinite;
 }
 
 /* ── LOGO BOX METÁLICO ── */
@@ -89,7 +89,7 @@
     #d8d8d8 100%
   );
   background-size: 200% auto;
-  animation: chrome-shine 3s linear infinite;
+  animation: chrome-shine 6s linear infinite;
 }
 
 /* ══════════════════════════════════════════
@@ -118,8 +118,9 @@
 
 /* Barrido de luz (shimmer) continuo sin pausa */
 @keyframes shimmer-sweep {
-  0%   { left: -80px; }
-  100% { left: 110%; }
+  0%     { left: -80px; }
+  90.57% { left: 110%; }
+  100%   { left: 110%; }
 }
 
 .card-metallic::after {
@@ -138,7 +139,7 @@
     transparent
   );
   transform: rotate(18deg);
-  animation: shimmer-sweep 2.4s linear infinite;
+  animation: shimmer-sweep 5.3s linear infinite;
   pointer-events: none;
 }
 
