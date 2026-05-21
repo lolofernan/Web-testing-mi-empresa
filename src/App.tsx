@@ -128,9 +128,13 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
+  const pricingRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const { scrollYProgress: pricingScroll } = useScroll({ target: pricingRef, offset: ["start 85%", "start 15%"] });
+  const phoneX = useTransform(pricingScroll, [0, 1], ["-220px", "0px"]);
+  const phoneOpacity = useTransform(pricingScroll, [0, 0.45], [0, 1]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -417,7 +421,7 @@ export default function App() {
       </section>
 
       {/* PRECIOS */}
-      <section id="precios" className="py-32 bg-[#080808] border-t border-white/5">
+      <section id="precios" ref={pricingRef} className="py-32 bg-[#080808] border-t border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-gray-600 uppercase text-[10px] tracking-[0.35em] font-bold block mb-4">Transparencia total</span>
@@ -425,75 +429,146 @@ export default function App() {
             <p className="text-gray-500 max-w-xl mx-auto font-light">Sin sorpresas ni costos ocultos. Precios pensados para emprendedores y negocios reales.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {plans.map((plan, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`relative rounded-2xl p-8 flex flex-col gap-8 transition-all duration-300 ${
-                  plan.highlight
-                    ? 'bg-white text-black'
-                    : 'bg-white/[0.03] border border-white/5 hover:border-white/15'
-                }`}
-              >
-                {plan.badge && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-[9px] font-black uppercase tracking-[0.3em] px-4 py-1.5 rounded-full border border-white/10">
-                    {plan.badge}
-                  </span>
-                )}
+          <div className="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
 
-                <div>
-                  <p className={`text-[10px] uppercase tracking-[0.3em] font-bold mb-4 ${plan.highlight ? 'text-gray-500' : 'text-gray-600'}`}>
-                    {plan.title}
-                  </p>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-xs font-bold opacity-60">USD</span>
-                    <span className="text-6xl font-black tracking-tighter font-display">{plan.price}</span>
+            {/* Phone mockup — slides in left → right on scroll */}
+            <motion.div
+              style={{ x: phoneX, opacity: phoneOpacity }}
+              className="flex-shrink-0 hidden lg:block relative"
+            >
+              {/* Phone frame */}
+              <div className="relative w-[285px] h-[580px] rounded-[3rem] border-[7px] border-white/10 bg-[#080808] shadow-[0_0_80px_rgba(255,255,255,0.04),inset_0_0_0_1px_rgba(255,255,255,0.06)] overflow-hidden">
+                {/* Dynamic island */}
+                <div className="absolute top-3.5 left-1/2 -translate-x-1/2 w-[72px] h-[22px] bg-black rounded-full z-10" />
+                {/* Screen content */}
+                <div className="h-full flex flex-col overflow-hidden pt-10 bg-[#080808]">
+                  {/* Mini nav */}
+                  <div className="flex justify-between items-center px-5 py-3">
+                    <div className="w-8 h-8 bg-white rounded-[6px] flex items-center justify-center">
+                      <span className="text-black text-[11px] font-black italic">L</span>
+                    </div>
+                    <div className="flex gap-1.5">
+                      <div className="w-14 h-1.5 bg-white/10 rounded-full" />
+                      <div className="w-8 h-1.5 bg-white/10 rounded-full" />
+                    </div>
                   </div>
-                  <p className={`text-xs mt-1 ${plan.highlight ? 'text-gray-500' : 'text-gray-600'}`}>{plan.period}</p>
+                  {/* Mini hero */}
+                  <div className="px-5 pt-3 pb-4">
+                    <div className="text-[11px] text-gray-500 uppercase tracking-widest font-bold mb-2">Disponible ahora</div>
+                    <div className="text-white text-[22px] font-black uppercase leading-[1] tracking-tighter">Páginas<br/>web que<br/><span className="text-gray-400">venden</span></div>
+                  </div>
+                  {/* Highlighted plan card */}
+                  <div className="mx-4 bg-white rounded-2xl p-4 shadow-xl flex flex-col gap-2.5">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-0.5">Mantenimiento</div>
+                        <div className="flex items-baseline gap-0.5">
+                          <span className="text-[10px] font-bold text-gray-400">USD</span>
+                          <span className="text-[2.4rem] font-black text-black tracking-tighter leading-none">44</span>
+                        </div>
+                        <div className="text-[9px] text-gray-400">/ mes</div>
+                      </div>
+                      <div className="bg-black text-white text-[7px] px-2.5 py-1 rounded-full font-black uppercase tracking-wide mt-1">Popular</div>
+                    </div>
+                    <div className="border-t border-gray-100 pt-2.5 flex flex-col gap-1.5">
+                      {["Dominio .com incluido", "5 modificaciones/mes", "Soporte prioritario", "Primer mes gratis"].map(f => (
+                        <div key={f} className="flex items-center gap-1.5">
+                          <div className="w-3.5 h-3.5 rounded-full bg-black flex items-center justify-center flex-shrink-0">
+                            <Check size={7} className="text-white" />
+                          </div>
+                          <span className="text-[9px] text-gray-600 font-medium">{f}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="bg-black text-white text-center text-[9px] font-black py-2.5 rounded-full uppercase tracking-widest mt-1">
+                      Empezar ahora
+                    </div>
+                  </div>
                 </div>
+                {/* Home bar */}
+                <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 w-24 h-[4px] bg-white/20 rounded-full" />
+              </div>
+              {/* Glow underneath */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-48 h-12 bg-white/5 blur-2xl rounded-full pointer-events-none" />
+            </motion.div>
 
-                <ul className={`space-y-3 border-t pt-6 flex-1 ${plan.highlight ? 'border-black/10' : 'border-white/5'}`}>
-                  {plan.features.map((f, j) => (
-                    <li key={j} className="flex items-start gap-3 text-sm font-light">
-                      <Check size={14} className={`mt-0.5 flex-shrink-0 ${plan.highlight ? 'text-black' : 'text-gray-500'}`} />
-                      <span className={plan.highlight ? 'text-gray-700' : 'text-gray-400'}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <motion.a
-                  href={WHATSAPP}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className={`w-full py-4 rounded-full font-bold uppercase tracking-widest text-xs text-center transition-colors ${
+            {/* Pricing cards */}
+            <div className="flex-1 w-full flex flex-col gap-4">
+              {plans.map((plan, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className={`relative rounded-2xl p-7 flex flex-col sm:flex-row sm:items-center gap-6 transition-all duration-300 ${
                     plan.highlight
-                      ? 'bg-black text-white hover:bg-gray-900'
-                      : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
+                      ? 'bg-white text-black'
+                      : 'bg-white/[0.03] border border-white/5 hover:border-white/15'
                   }`}
                 >
-                  Empezar ahora
-                </motion.a>
-              </motion.div>
-            ))}
-          </div>
+                  {plan.badge && (
+                    <span className="absolute -top-3 left-6 bg-black text-white text-[9px] font-black uppercase tracking-[0.3em] px-4 py-1.5 rounded-full border border-white/10">
+                      {plan.badge}
+                    </span>
+                  )}
 
-          {/* Bono */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-10 max-w-5xl mx-auto border border-dashed border-white/10 rounded-2xl p-8 text-center"
-          >
-            <p className="text-gray-400 text-sm font-light">
-              🎁 <span className="text-white font-semibold">Bono de bienvenida:</span> El primer mes de mantenimiento es 100% gratis. Solo abonás el dominio.
-            </p>
-          </motion.div>
+                  {/* Price block */}
+                  <div className="flex-shrink-0 sm:w-36">
+                    <p className={`text-[10px] uppercase tracking-[0.3em] font-bold mb-2 ${plan.highlight ? 'text-gray-500' : 'text-gray-600'}`}>
+                      {plan.title}
+                    </p>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-xs font-bold opacity-60">USD</span>
+                      <span className="text-5xl font-black tracking-tighter font-display">{plan.price}</span>
+                    </div>
+                    <p className={`text-xs mt-1 ${plan.highlight ? 'text-gray-500' : 'text-gray-600'}`}>{plan.period}</p>
+                  </div>
+
+                  {/* Divider */}
+                  <div className={`hidden sm:block w-px self-stretch ${plan.highlight ? 'bg-black/10' : 'bg-white/5'}`} />
+
+                  {/* Features */}
+                  <ul className="flex flex-wrap gap-x-6 gap-y-2 flex-1">
+                    {plan.features.map((f, j) => (
+                      <li key={j} className="flex items-center gap-2 text-sm font-light">
+                        <Check size={13} className={`flex-shrink-0 ${plan.highlight ? 'text-black' : 'text-gray-500'}`} />
+                        <span className={plan.highlight ? 'text-gray-700' : 'text-gray-400'}>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA */}
+                  <motion.a
+                    href={WHATSAPP}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className={`flex-shrink-0 px-6 py-3.5 rounded-full font-bold uppercase tracking-widest text-xs text-center transition-colors whitespace-nowrap ${
+                      plan.highlight
+                        ? 'bg-black text-white hover:bg-gray-900'
+                        : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
+                    }`}
+                  >
+                    Empezar ahora
+                  </motion.a>
+                </motion.div>
+              ))}
+
+              {/* Bono */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="border border-dashed border-white/10 rounded-2xl p-6 text-center"
+              >
+                <p className="text-gray-400 text-sm font-light">
+                  🎁 <span className="text-white font-semibold">Bono de bienvenida:</span> El primer mes de mantenimiento es 100% gratis. Solo abonás el dominio.
+                </p>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
