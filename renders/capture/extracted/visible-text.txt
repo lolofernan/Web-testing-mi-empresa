@@ -1,0 +1,105 @@
+[span] Lorenzo Studio
+[button] Servicios
+[button] Proyectos
+[button] Sobre mí
+[a] Contactar
+[span] Disponible para nuevos proyectos
+[h1] Páginas web
+[span] que venden
+[p] Diseño y desarrollo sitios web modernos para negocios y emprendedores. Entrega rápida, precios accesibles y resultados reales.
+[a] Pedir presupuesto
+[button] Ver proyectos
+[span] Entrega en 3–13 días
+[span] Primer mes bonificado
+[span] Desde 35 USD
+[span] Lo que hago
+[h2] Servicios
+[h3] Diseño Web
+[p] Interfaces exclusivas que capturan la esencia de tu marca. Diseño moderno, animado y adaptado a cualquier dispositivo.
+[h3] Desarrollo a Medida
+[p] Código limpio y escalable con las últimas tecnologías. React, Tailwind, animaciones, formularios y más.
+[h3] SEO & Velocidad
+[p] Tu sitio optimizado para aparecer en Google y cargar rápido. Más visitas, más ventas.
+[h3] Google Maps
+[p] Ponemos tu negocio en el mapa. Optimización de perfil, visibilidad local y más clientes cerca tuyo.
+[span] Trabajos recientes
+[h2] Proyectos
+[a] Ver más en WhatsApp
+[span] Reservas online
+[span] SEO local
+[span] Mobile-first
+[span] Landing Page
+[h3] Estudio de Pilates
+[a] Ver detalle
+[span] Menú digital
+[span] Reservas
+[span] Google Maps
+[span] Web Completa
+[h3] Restaurante Gourmet
+[a] Ver detalle
+[span] Formulario de contacto
+[span] Blog
+[span] SEO
+[span] Sitio Corporativo
+[h3] Consultora Legal
+[a] Ver detalle
+[p] ¿Querés ver más ejemplos?
+[a] Escribime por WhatsApp
+[span] Transparencia total
+[h2] Precios
+[p] Sin sorpresas ni costos ocultos. Precios pensados para emprendedores y negocios reales.
+[p] Página Web
+[span] USD
+[p] pago único
+[span] Diseño profesional personalizado
+[span] Adaptada a celular y tablet
+[span] Entrega en 3 a 13 días
+[span] Código limpio y moderno
+[a] Empezar ahora
+[span] MÁS POPULAR
+[p] Mantenimiento
+[span] USD
+[p] / mes
+[span] Dominio .com incluido
+[span] 5 modificaciones por mes
+[span] Soporte prioritario
+[span] Primer mes 100% bonificado
+[span] Modificaciones pequeñas sin límite
+[a] Empezar ahora
+[p] Rediseño / Funciones
+[span] USD
+[p] desde
+[span] Rediseño de secciones
+[span] Nuevas funcionalidades
+[span] Presupuesto exacto previo
+[span] Escalabilidad garantizada
+[a] Empezar ahora
+[span] Bono de bienvenida:
+[p] El primer mes de mantenimiento es 100% gratis. Solo abonás el dominio.
+[div] 15 años 🔥
+[span] El fundador
+[h2] Hola, soy
+[h2] Lorenzo
+[p] Tengo 15 años y empecé a programar porque quería construir cosas reales. Hoy ayudo a negocios y emprendedores a tener presencia digital profesional sin pagar precios de agencia.
+[p] Cada proyecto lo tomo en serio: escucho lo que necesitás, diseño algo a medida y lo entrego rápido. Sin intermediarios, sin vueltas.
+[span] React & Tailwind
+[span] Animaciones
+[span] SEO
+[span] Google Maps
+[span] Diseño UI
+[a] WhatsApp
+[a] Instagram
+[span] Preguntas frecuentes
+[h2] FAQ
+[span] ¿En cuánto tiempo tengo lista mi web?
+[span] ¿Necesito saber de tecnología para contratarte?
+[span] ¿Qué pasa si quiero cambios después de la entrega?
+[span] ¿Los precios son en dólares o pesos?
+[span] ¿Puedo ver ejemplos de tu trabajo?
+[h2] ¿Arrancamos?
+[p] Contame tu proyecto por WhatsApp y en minutos tenés un presupuesto personalizado.
+[a] Hablar con Lorenzo
+[span] Lorenzo Studio
+[p] © 2026 Lorenzo Studio — Diseño web desde Buenos Aires
+[a] Instagram
+[a] WhatsApp
