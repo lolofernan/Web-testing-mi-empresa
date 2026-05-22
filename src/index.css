@@ -466,3 +466,71 @@
   border: 1px solid rgba(255,255,255,0.10);
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
 }
+
+/* ══════════════════════════════════════════
+   PRECIOS — STACK 3D
+══════════════════════════════════════════ */
+
+/* Fondo sólido animado para cartas de precio */
+@keyframes price-bg-drift {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.price-card-solid {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(255,255,255,0.025) 0%, transparent 70%),
+    linear-gradient(135deg, #111111 0%, #0a0a0a 50%, #131313 100%);
+  background-size: 200% 200%;
+  animation: price-bg-drift 8s ease-in-out infinite;
+}
+
+.price-card-solid-promo {
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 80%, rgba(255,255,255,0.02) 0%, transparent 70%),
+    linear-gradient(135deg, #0d0d0d 0%, #111111 50%, #0a0a0a 100%);
+  background-size: 200% 200%;
+  animation: price-bg-drift 10s ease-in-out infinite reverse;
+}
+
+/* ══════════════════════════════════════════
+   SÍMBOLO DECORATIVO HERO (diamante)
+══════════════════════════════════════════ */
+
+@keyframes symbol-breathe {
+  0%, 100% { transform: rotate(45deg) scale(1);    box-shadow: 0 0 14px rgba(255,255,255,0.10), inset 0 0 6px rgba(255,255,255,0.04); }
+  50%       { transform: rotate(45deg) scale(1.14); box-shadow: 0 0 26px rgba(255,255,255,0.18), inset 0 0 10px rgba(255,255,255,0.08); }
+}
+
+.hero-symbol {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  transform: rotate(45deg);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 14px rgba(255,255,255,0.10), inset 0 0 6px rgba(255,255,255,0.04);
+  animation: symbol-breathe 3.5s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════
+   CUADRÍCULA 3D CON PERSPECTIVA (HERO)
+══════════════════════════════════════════ */
+
+.hero-3d-grid {
+  position: absolute;
+  bottom: -8%;
+  left: -30%;
+  right: -30%;
+  height: 58%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.048) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.048) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: perspective(480px) rotateX(58deg);
+  transform-origin: center 100%;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.22) 55%, transparent 88%);
+  mask-image:         linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.22) 55%, transparent 88%);
+}
